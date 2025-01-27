@@ -31,3 +31,24 @@ body {
 .CalistogaFont{
   font-family: Calistoga;
 }
+.MainBorder{
+  border-color: #24BDBD;
+}
+.ConstuctionButton{
+  color: #24BDBD;
+}
+.heroSubTextBackground{
+  background: #1D1C1C;
+ 
+}
+.heroSubTextDescription{
+  color: #AFAEAE;
+  font-family: 'Inter', sans-serif;
+}
+.rightWidth{
+  right: 35rem;
+}
+.subHeroImageBorder{
+  border-width: 1px;
+  border-color: #7A7A7A;
+}

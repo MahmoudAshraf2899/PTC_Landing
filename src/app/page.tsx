@@ -78,46 +78,57 @@ export default function Home() {
         </nav>
 
         {/* Main Content */}
-        <div className="flex items-center gap-8 justify-center p-28 h-[calc(100vh-80px)]">
-          <div className="w-full relative">
+        <div className="flex  relative gap-10 justify-center p-28 h-[calc(100vh-80px)]">
+          <div className="w-full ">
             <Image
               src={hero}
               alt="MainHeroImage"
               width={700}
               height={800}
-              className="rounded-lg"
+              className="rounded-lg w-full"
             />
-            <div className="absolute bottom-1 right-0 bg-red-700 text-white text-sm  flex items-center gap-4  rounded-xl">
-              <div className="flex relative items-center gap-2">
-                <Image
-                  src={subHeroImage}
-                  alt="subHeroImage"
-                  width={120}
-                  height={120}
-                  className="rounded-xl"
-                />
-                <div className="w-[120px]">
-                  <h2 className="text-lg font-semibold">John Doe</h2>
-                  <p className="text-sm">Architect</p>
+          </div>
+          {/* Hero Section Main Title */}
+          <div className="flex flex-col  w-3/2 h-auto items-start">
+            <div>
+              <h1 className="text-5xl  CalistogaFont md:text-5xl font-bold  text-white uppercase text-start mb-4 mt-6">
+                Best Solution For Your Business
+              </h1>
+              {/* Developments & Constructions Buttons */}
+              <div className="flex flex-row w-5/6 gap-4 mb-20">
+                <button className="px-1 h-14 py-2 mainBackground rounded-lg shadow-lg w-full">
+                  Developments
+                </button>
+                <button className="px-1 py-2   rounded-lg ConstuctionButton bg-inherit border MainBorder shadow-lg w-full">
+                  Constructions
+                </button>
+              </div>
+            </div>
+            {/* Sub Title */}
+            <div className="flex flex-row justify-end items-center heroSubTextBackground rounded-lg CalistogaFont  w-full px-4 py-4">
+              <div className="flex flex-col justify-center items-center w-full">
+                <div className="w-full"></div>
+                <div>
+                  <h3 className="text-start text-3xl font-bold  text-nowrap mb-2">
+                    Smarter Property Deals
+                  </h3>
+                  <p className="heroSubTextDescription text-start  text-[14px]">
+                    Trusted by professionals for buying, selling and invest in
+                    real estate with advanced tools, market, insights and expert
+                    guidence.
+                  </p>
                 </div>
               </div>
             </div>
           </div>
-
-          <div className="flex flex-col justify-start items-start">
-            <h1 className="text-5xl CalistogaFont md:text-6xl font-bold  text-white uppercase text-start   mb-4">
-              Best Solution For Your Business
-            </h1>
-            {/* Developments & Constructions Buttons */}
-            <div className="flex flex-row w-5/6 gap-4   mb-60">
-              <button className="px-1 py-2 mainBackground rounded-lg shadow-lg w-full">
-                Developments
-              </button>
-              <button className="px-1 py-2 mainBackground rounded-lg shadow-lg w-full">
-                Constructions
-              </button>
-            </div>
-          </div>
+        </div>
+        <div className="absolute bottom-12 rightWidth p-4">
+          <Image
+            src={subHeroImage} // Replace with the path to your image
+            alt="Bottom Right Image"
+            className="rounded-full h-[181px] w-[177px] subHeroImageBorder"
+            // style={{ clipPath: "circle(40%)" }}
+          />
         </div>
       </div>
     </section>
