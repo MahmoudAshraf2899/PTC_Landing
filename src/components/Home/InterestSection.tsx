@@ -18,7 +18,7 @@ const InterestSection = () => {
 
       {/* Form Container */}
       <div className="relative z-10 flex items-center justify-center h-full">
-        <form className="bg-white p-8 px-11  rounded-2xl shadow-lg w-full max-w-md">
+        <form className="bg-white p-8 px-14  rounded-2xl shadow-lg w-full max-w-md">
           <h2 className="text-4xl CalistogaFont font-black tracking-tight text-gray-800 mb-6 ">
             Register your interest
           </h2>

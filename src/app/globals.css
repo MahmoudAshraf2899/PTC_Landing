@@ -1,7 +1,7 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600&display=swap');
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-  
 :root {
   --background: #ffffff;
   --foreground: #171717;
@@ -29,7 +29,7 @@ body {
   background-color: #24BDBD;
 }
 .CalistogaFont{
-  font-family: Calistoga;
+  font-family: "Calistoga", serif;;
 }
 .MainBorder{
   border-color: #24BDBD;
