@@ -52,3 +52,17 @@ body {
   border-width: 1px;
   border-color: #7A7A7A;
 }
+.projectsSectionBackground{
+  background-color: #1D1C1C;
+}
+.interFont{
+  font-family: 'Inter', sans-serif;
+}
+.interestSectionBorder{
+  border: 1px;
+  border-color: #7A7A7AA6;
+}
+.SelectProjectBorder{
+  border-width: 1px;
+  border-color: #24BDBD;
+}
