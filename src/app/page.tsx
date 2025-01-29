@@ -1,35 +1,23 @@
-// import Hero from "@/components/Home/Hero";
-import Navbar from "@/components/Header/NavBar/NavBar";
-// import GuaranteeSection from "@/components/Home/GuaranteeSection";
-// import ProjectSection from "@/components/Home/ProjectsSection";
-// import InterestSection from "@/components/Home/InterestSection";
-// import AdSection from "@/components/Home/AdSection";
-import Footer from "@/components/Footer/Footer";
-// import { Construction } from "lucide-react";
-import Constructions from "@/components/Constructions/Constructions";
+import Hero from "@/components/Home/Hero";
+import GuaranteeSection from "@/components/Home/GuaranteeSection";
+import ProjectSection from "@/components/Home/ProjectsSection";
+import InterestSection from "@/components/Home/InterestSection";
+import AdSection from "@/components/Home/AdSection";
+import { Construction } from "lucide-react";
 
 export default function Home() {
   return (
     <section>
-      {/* Navigation */}
-
-      <Navbar />
-
       {/* Hero Section */}
-      {/* <Hero /> */}
+      <Hero />
       {/* Guarantee Section */}
-      {/* <GuaranteeSection /> */}
+      <GuaranteeSection />
       {/* Project Section */}
-      {/* <ProjectSection /> */}
+      <ProjectSection />
       {/* Interest Section */}
-      {/* <InterestSection /> */}
+      <InterestSection />
       {/* Ad Section */}
-      {/* <AdSection /> */}
-
-      {/* Constructions */}
-      <Constructions />
-      {/* Footer */}
-      <Footer />
+      <AdSection />
     </section>
   );
 }

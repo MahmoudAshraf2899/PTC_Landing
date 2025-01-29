@@ -1,16 +1,24 @@
 "use client";
-
 import { useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import logo from "../../../../public/icons/PTCLOGO.png";
 import { Menu, X } from "lucide-react"; // For mobile menu icons
+import { usePathname } from "next/navigation"; // Import usePathname
 
 const Navbar = () => {
   const [menuOpen, setMenuOpen] = useState(false);
+  const pathname = usePathname(); // Get current route
 
+  const navLinks = [
+    { name: "Home", path: "/" },
+    { name: "Developments", path: "/Developments" },
+    { name: "Constructions", path: "/Constructions" },
+    { name: "About Us", path: "/AboutUs" },
+    { name: "Contact Us", path: "/ContactUs" },
+  ];
   return (
-    <nav className="bg-opacity-60 bg-inherit z-10 absolute w-full px-6 py-4">
+    <nav className="bg-opacity-60 bg-inherit z-50 absolute w-full px-6 py-4">
       <div className="mx-auto flex justify-between items-center">
         {/* Logo */}
         <div className="flex items-center">
@@ -25,19 +33,17 @@ const Navbar = () => {
 
         {/* Desktop Menu */}
         <div className="hidden md:flex gap-8">
-          {[
-            "Home",
-            "Developments",
-            "Constructions",
-            "About Us",
-            "Contact Us",
-          ].map((item, index) => (
+          {navLinks.map(({ name, path }) => (
             <Link
-              key={index}
-              href={`/${item.replace(" ", "")}`}
-              className="text-[16px] z-10 cursor-pointer text-white hover:text-slate-200 transition"
+              key={path}
+              href={path}
+              className={`text-[16px] z-10   ${
+                pathname === path
+                  ? "text-yellow-500 font-bold"
+                  : "text-white hover:text-slate-200"
+              }`}
             >
-              {item}
+              {name}
             </Link>
           ))}
         </div>
@@ -84,19 +90,17 @@ const Navbar = () => {
       {/* Mobile Menu */}
       {menuOpen && (
         <div className="md:hidden flex flex-col items-center bg-gray-900 py-4 space-y-4">
-          {[
-            "Home",
-            "Developments",
-            "Constructions",
-            "About Us",
-            "Contact Us",
-          ].map((item, index) => (
+          {navLinks.map(({ name, path }) => (
             <Link
-              key={index}
-              href={`/${item.replace(" ", "")}`}
-              className="text-white cursor-pointer text-lg hover:text-slate-300 transition"
+              key={path}
+              href={path}
+              className={`text-lg cursor-pointer transition ${
+                pathname === path
+                  ? "text-yellow-500 font-bold"
+                  : "text-white hover:text-slate-300"
+              }`}
             >
-              {item}
+              {name}
             </Link>
           ))}
           <button className="px-4 py-2 border border-slate-100 flex items-center gap-2 rounded-lg shadow-lg">
