@@ -10,10 +10,11 @@ module.exports = {
       satoshi: ['Satoshi', 'sans-serif'],
     },
     screens: {
-      '2xsm': '375px',
-      xsm: '425px',
-      '3xl': '2000px',
-      
+      xs: "300px",
+      sm: "480px",
+      md: "768px",
+      lg: "976px",
+      xl: "1440px",
     },
      
   },
