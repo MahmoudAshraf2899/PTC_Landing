@@ -10,15 +10,15 @@ const Navbar = () => {
   const [menuOpen, setMenuOpen] = useState(false);
 
   return (
-    <nav className="bg-opacity-60 bg-black px-6 py-4">
-      <div className="container mx-auto flex justify-between items-center">
+    <nav className="bg-opacity-60 bg-inherit z-10 absolute w-full px-6 py-4">
+      <div className="mx-auto flex justify-between items-center">
         {/* Logo */}
         <div className="flex items-center">
           <Image
             src={logo}
             alt="Logo"
-            width={100}
-            height={80}
+            width={160}
+            height={160}
             className="rounded-full"
           />
         </div>
@@ -35,7 +35,7 @@ const Navbar = () => {
             <Link
               key={index}
               href={`/${item.replace(" ", "")}`}
-              className="text-[16px] text-white hover:text-slate-200 transition"
+              className="text-[16px] z-10 cursor-pointer text-white hover:text-slate-200 transition"
             >
               {item}
             </Link>
@@ -94,7 +94,7 @@ const Navbar = () => {
             <Link
               key={index}
               href={`/${item.replace(" ", "")}`}
-              className="text-white text-lg hover:text-slate-300 transition"
+              className="text-white cursor-pointer text-lg hover:text-slate-300 transition"
             >
               {item}
             </Link>

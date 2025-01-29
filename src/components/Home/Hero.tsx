@@ -33,9 +33,9 @@ const HeroSection = () => {
         </div>
 
         {/* Sub Image & Text Box */}
-        <div className="relative mt-8 bg-gray-900 p-4 rounded-lg shadow-lg">
+        <div className="relative mt-8 heroSubTextBackground p-4 rounded-lg shadow-lg">
           {/* Circular Sub Image */}
-          <div className="absolute -top-4  hidden lg:block -left-20 lg:-left-[115px] w-32 h-32 lg:w-52 lg:h-52 border-4 border-white rounded-full overflow-hidden">
+          <div className="absolute -top-4  hidden lg:block -left-20 lg:-left-[115px] w-32 h-32 lg:w-52 lg:h-52   rounded-full overflow-hidden">
             <Image
               src={subImage}
               alt="Sub Image"
@@ -44,7 +44,7 @@ const HeroSection = () => {
           </div>
 
           {/* Text inside the box */}
-          <div className="ml-16 lg:ml-20">
+          <div className="ml-16 lg:ml-20 ">
             <h3 className="text-lg CalistogaFont lg:text-3xl   font-semibold">
               Smarter Property Deals
             </h3>
