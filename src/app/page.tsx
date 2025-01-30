@@ -3,7 +3,6 @@ import GuaranteeSection from "@/components/Home/GuaranteeSection";
 import ProjectSection from "@/components/Home/ProjectsSection";
 import InterestSection from "@/components/Home/InterestSection";
 import AdSection from "@/components/Home/AdSection";
-import { Construction } from "lucide-react";
 
 export default function Home() {
   return (

@@ -29,7 +29,14 @@ body {
   background-color: #24BDBD;
 }
 .CalistogaFont{
-  font-family: "Calistoga", serif;;
+  font-family: "Calistoga", serif;
+  font-weight: 900;
+  font-style: normal;
+}
+.CalistogaFont-LessWeight{
+  font-family: "Calistoga", serif;
+  font-weight: 400;
+  font-style: normal;
 }
 .MainBorder{
   border-color: #24BDBD;

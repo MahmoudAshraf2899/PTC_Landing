@@ -15,6 +15,7 @@ const Navbar = () => {
     { name: "Developments", path: "/Developments" },
     { name: "Constructions", path: "/Constructions" },
     { name: "About Us", path: "/AboutUs" },
+    { name: "Privacy Policy", path: "/PrivacyPolicy" },
     { name: "Contact Us", path: "/ContactUs" },
   ];
   return (
@@ -39,8 +40,8 @@ const Navbar = () => {
               href={path}
               className={`text-[16px] z-10   ${
                 pathname === path
-                  ? "text-yellow-500 font-bold"
-                  : "text-white hover:text-slate-200"
+                  ? "text-white font-bold"
+                  : "text-slate-400 hover:text-slate-600"
               }`}
             >
               {name}

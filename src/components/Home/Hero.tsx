@@ -44,7 +44,7 @@ const HeroSection = () => {
           </div>
 
           {/* Text inside the box */}
-          <div className="ml-16 lg:ml-20 ">
+          <div className="ml-16 lg:ml-40 ">
             <h3 className="text-lg CalistogaFont lg:text-3xl   font-semibold">
               Smarter Property Deals
             </h3>

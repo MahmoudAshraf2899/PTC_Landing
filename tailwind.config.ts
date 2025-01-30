@@ -1,4 +1,4 @@
-import rippleui from 'rippleui';
+ import rippleui from 'rippleui';
 
 /** @type {import('tailwindcss').Config} */
 module.exports = {
@@ -8,6 +8,7 @@ module.exports = {
   theme: {
     fontFamily: {
       satoshi: ['Satoshi', 'sans-serif'],
+    
     },
     screens: {
       xs: "300px",

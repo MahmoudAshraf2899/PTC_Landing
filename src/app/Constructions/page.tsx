@@ -1,4 +1,4 @@
-import Constructions from "@/components/Constructions/page";
+import Constructions from "@/components/Constructions/Constructions";
 import React from "react";
 
 const ConstructionPage = () => {
