@@ -41,7 +41,7 @@ const Navbar = () => {
               className={`text-[16px] z-10   ${
                 pathname === path
                   ? "text-white font-bold"
-                  : "text-slate-400 hover:text-slate-600"
+                  : "text-slate-400 hover:text-white"
               }`}
             >
               {name}

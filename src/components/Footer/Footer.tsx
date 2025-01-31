@@ -61,7 +61,9 @@ const Footer = () => {
         <div className="flex flex-col items-center md:items-start space-y-4">
           <div className="flex items-center gap-2">
             <Image src={email} alt="email" width={30} height={30} />
-            <p className="interFont text-[13px] text-white">info@PTCEG.com</p>
+            <p className="interFont text-[13px] text-white">
+              <a href="mailto:info@PTCEG.com2">info@PTCEG.com</a>
+            </p>
           </div>
 
           <div className="flex flex-col items-center md:items-start">

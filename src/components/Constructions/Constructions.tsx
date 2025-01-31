@@ -1,7 +1,7 @@
 import Image from "next/image";
 import subHeroImage from "../../../public/icons/SubHeroMain.jpg";
 import project from "../../../public/icons/Contruction1.jpg";
-
+import Link from "next/link";
 const Constructions = () => {
   return (
     <>
@@ -30,7 +30,9 @@ const Constructions = () => {
         {/* Text Section */}
         <div className="flex flex-col w-full sm:w-1/3 pl-4 sm:pl-10 lg:pl-28">
           <h2 className="text-4xl sm:text-4xl CalistogaFont font-black text-white uppercase">
-            THE LATIN QUARTER IN NEW ALAMEIN
+            <Link href={`/Constructions/1`} className="cursor-pointer">
+              THE LATIN QUARTER IN NEW ALAMEIN
+            </Link>
           </h2>
           <p className="leading-7 font-bold text-white interFont text-sm sm:text-base lg:text[14px]">
             The company successfully executed a significant number of
