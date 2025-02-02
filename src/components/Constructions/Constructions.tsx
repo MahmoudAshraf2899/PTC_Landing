@@ -4,6 +4,7 @@ import Image from "next/image";
 import subHeroImage from "../../../public/icons/SubHeroMain.jpg";
 import project from "../../../public/icons/Contruction1.jpg";
 import Link from "next/link";
+import Loader from "../Loader/loader";
 const BASE_URL = "https://ptcbackend-001-site1.jtempurl.com";
 interface Project {
   id: string;
@@ -65,6 +66,7 @@ const Constructions = () => {
   }, []);
   return (
     <>
+      {isLoading ? <Loader /> : null}
       <div className="relative h-screen">
         {/* Background Image */}
         <Image
