@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import Image from "next/image";
 import Loader from "../Loader/loader";
 import subHeroImage from "../../../public/icons/SubHeroMain.jpg";
+import Link from "next/link";
 
 const BASE_URL = "https://ptcbackend-001-site1.jtempurl.com";
 interface Project {
@@ -102,9 +103,11 @@ const ProjectSection = () => {
 
         {/* All Projects Button */}
         <div className="text-center">
-          <button className="font-normal h-14 py-3 px-12 mainBackground rounded-lg shadow-lg text-[16px]">
-            <span className="interFont">All Projects</span>
-          </button>
+          <Link key={"Projects"} href={"/Projects"}>
+            <button className="font-normal h-14 py-3 px-12 mainBackground rounded-lg shadow-lg text-[16px]">
+              <span className="interFont">All Projects</span>
+            </button>
+          </Link>
         </div>
       </div>
     </>
