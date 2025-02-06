@@ -66,7 +66,7 @@ const Constructions = () => {
   }, []);
   return (
     <>
-      {constructionData == null ? (
+      {constructionData == null || isLoading ? (
         <Loader />
       ) : (
         <>

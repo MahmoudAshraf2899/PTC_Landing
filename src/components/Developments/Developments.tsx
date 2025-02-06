@@ -66,7 +66,7 @@ const Developments = () => {
   }, []);
   return (
     <>
-      {developmentData == null ? (
+      {developmentData == null || isLoading ? (
         <Loader />
       ) : (
         <>
