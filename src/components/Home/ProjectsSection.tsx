@@ -57,12 +57,12 @@ const ProjectSection = () => {
       {isLoading && <Loader />}
       <div className="mt-20 px-6">
         {/* Section Title */}
-        <h2 className="text-center CalistogaFont text-3xl md:text-5xl uppercase font-bold text-white">
+        <h2 className="text-center fade-in-scale CalistogaFont text-3xl md:text-5xl uppercase font-bold text-white">
           Best Solution For Your Business
         </h2>
 
         {/* Project Grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 mt-10 mb-10 pb-4">
+        <div className="grid grid-cols-1 fade-in-scale sm:grid-cols-2 lg:grid-cols-3 gap-8 mt-10 mb-10 pb-4">
           {projectData?.map((item) => (
             <div
               key={item.id}
@@ -93,8 +93,13 @@ const ProjectSection = () => {
                 <p className="mb-3 text-white text-[14px] interFont tracking-tight">
                   {item.description}
                 </p>
-                <button className="px-1 py-2 rounded-lg ConstuctionButton bg-inherit border MainBorder shadow-lg w-full">
-                  Show More
+                <button className="px-1 py-2 rounded-lg ConstuctionButton bg-inherit border MainBorder hover:text-white hover:bg-[#24BDBD] shadow-lg w-full">
+                  <Link
+                    href={`/Projects/${item.id}`}
+                    className="cursor-pointer "
+                  >
+                    Show More
+                  </Link>
                 </button>
               </div>
             </div>

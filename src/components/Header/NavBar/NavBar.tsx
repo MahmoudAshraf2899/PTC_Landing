@@ -1,15 +1,18 @@
 "use client";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import logo from "../../../../public/icons/PTCLOGO.png";
 import { Menu, X } from "lucide-react"; // For mobile menu icons
-import { usePathname } from "next/navigation"; // Import usePathname
+import { usePathname } from "next/navigation";
+const BASE_URL = "https://ptcbackend-001-site1.jtempurl.com";
 
 const Navbar = () => {
   const [menuOpen, setMenuOpen] = useState(false);
   const pathname = usePathname(); // Get current route
   const [showVideo, setShowVideo] = useState(false);
+  const [introVideo, setIntroVideo] = useState("");
+
   const navLinks = [
     { name: "Home", path: "/" },
     { name: "Developments", path: "/Developments" },
@@ -18,9 +21,35 @@ const Navbar = () => {
     { name: "Privacy Policy", path: "/PrivacyPolicy" },
     { name: "Contact Us", path: "/ContactUs" },
   ];
+
+  useEffect(() => {
+    // Fetch data from API
+
+    const fetchData = async () => {
+      try {
+        if (localStorage.getItem("intro") == null) {
+          const response = await fetch(
+            `${BASE_URL}/api/AppSettings/introduction_video`
+          ); // Replace with your actual API URL
+          if (!response.ok)
+            throw new Error("Failed to fetch introduction_video");
+
+          const data = await response.json();
+          setIntroVideo(data.data.value);
+          localStorage.setItem("intro", data.data.value);
+        } else {
+          setIntroVideo(localStorage.getItem("intro") ?? "");
+        }
+      } catch (error) {
+        console.error("Error fetching about us data:", error);
+      }
+    };
+
+    fetchData();
+  }, []);
   return (
     <>
-      <nav className="bg-opacity-60 bg-inherit z-50 absolute w-full px-6 py-4">
+      <nav className="bg-opacity-60 bg-inherit z-50 absolute w-full fade-in-scale px-6 py-4">
         <div className="mx-auto flex justify-between items-center">
           {/* Logo */}
           <div className="flex items-center">
@@ -141,8 +170,8 @@ const Navbar = () => {
             {/* Embedded Video */}
             <div className="relative w-full pt-[56.25%]">
               <iframe
-                className="absolute top-0 left-0 w-full h-full"
-                src="https://www.youtube.com/embed/IjlYXtI2-GU"
+                className="absolute top-0 left-0 fade-in-scale w-full h-full"
+                src={introVideo}
                 title="Construction Promo Video | Construction Company | TranStudio | Vapi"
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
                 referrerPolicy="strict-origin-when-cross-origin"

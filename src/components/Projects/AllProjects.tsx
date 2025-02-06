@@ -1,5 +1,5 @@
 "use client";
-import { useEffect, useState, useRef, useCallback } from "react";
+import { useEffect, useState } from "react";
 import Image from "next/image";
 import Loader from "../Loader/loader";
 import Link from "next/link";
@@ -18,19 +18,11 @@ const AllProjects = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [page, setPage] = useState(1);
   const [hasMore, setHasMore] = useState(true);
-  const observer = useRef<IntersectionObserver | null>(null);
-  const [projectData, setProjectsData] = useState<
-    {
-      id: string;
-      title: string;
-      description: string;
-      image: string;
-    }[]
-  >([]);
+  const [projectData, setProjectsData] = useState<Project[]>([]);
 
   // Fetch Projects
-  const fetchProjects = useCallback(async () => {
-    if (!hasMore || isLoading) return; // Stop if already loading or no more pages
+  const fetchProjects = async () => {
+    if (!hasMore || isLoading) return;
 
     setIsLoading(true);
     try {
@@ -41,42 +33,23 @@ const AllProjects = () => {
 
       const result = await response.json();
       if (Array.isArray(result.data)) {
-        setProjectsData(
-          result.data.map((project: Project) => ({
+        setProjectsData((prev) => [
+          ...prev,
+          ...result.data.map((project: Project) => ({
             id: project.id,
             title: project.title,
             description: project.description,
-            image: BASE_URL + project.mainIMage,
-          }))
-        );
-        setHasMore(result.data.length > 0); // If no new data, stop pagination
+            mainIMage: BASE_URL + project.mainIMage,
+          })),
+        ]);
+        setHasMore(result.page.totalPages != page);
         setPage((prev) => prev + 1);
       }
     } catch (error) {
       console.error("Error fetching projects:", error);
     }
     setIsLoading(false);
-  }, [page, hasMore, isLoading]);
-
-  // Handle Intersection Observer for Infinite Scroll
-  const lastProjectRef = useCallback(
-    (node: HTMLDivElement) => {
-      if (isLoading) return;
-      if (observer.current) observer.current.disconnect();
-
-      observer.current = new IntersectionObserver(
-        (entries) => {
-          if (entries[0].isIntersecting && hasMore) {
-            fetchProjects();
-          }
-        },
-        { threshold: 1 }
-      );
-
-      if (node) observer.current.observe(node);
-    },
-    [isLoading, hasMore, fetchProjects]
-  );
+  };
 
   // Initial Fetch
   useEffect(() => {
@@ -87,7 +60,6 @@ const AllProjects = () => {
     <>
       {isLoading && <Loader />}
       <div className="relative h-screen">
-        {/* Background Image */}
         <Image
           src={subHeroImage}
           alt="Hero Background"
@@ -96,7 +68,6 @@ const AllProjects = () => {
           className="absolute opacity-55 inset-0"
           loading="eager"
         />
-
         <div className="relative z-10 flex flex-col items-center justify-center h-full px-4 sm:px-8 md:px-16">
           <h2 className="font-bold text-2xl sm:text-3xl lg:text-4xl text-white CalistogaFont text-center">
             {
@@ -111,18 +82,17 @@ const AllProjects = () => {
 
       {/* Project Section */}
       {projectData.map((project, index) => (
-        <div
-          key={project.id}
-          ref={index === projectData.length - 1 ? lastProjectRef : null}
-        >
+        <div key={project.id}>
           <div
             className={`flex flex-col sm:flex-row justify-center items-center w-full lg:mt-20 md:mt-10 sm:mt-10 xs:mt-10 px-4 sm:px-8 
-                  ${index % 2 === 0 ? "sm:flex-row" : "sm:flex-row-reverse"}`}
+            ${index % 2 === 0 ? "sm:flex-row" : "sm:flex-row-reverse"}`}
           >
-            {/* Text Section */}
             <div className="flex flex-col w-full sm:w-1/3 pr-4 sm:pl-10 lg:pr-28">
               <h2 className="text-4xl sm:text-4xl CalistogaFont font-black text-white uppercase">
-                <Link href={`/Constructions/1`} className="cursor-pointer">
+                <Link
+                  href={`/Projects/${project.id}`}
+                  className="cursor-pointer"
+                >
                   {project.title}
                 </Link>
               </h2>
@@ -130,8 +100,6 @@ const AllProjects = () => {
                 {project.description}
               </p>
             </div>
-
-            {/* Image Section */}
             <div
               className={`w-full sm:w-2/3 flex flex-col 
               ${
@@ -142,7 +110,7 @@ const AllProjects = () => {
               sm:pr-10 mt-8 sm:mt-0`}
             >
               <Image
-                src={project.image}
+                src={project.mainIMage}
                 alt="project"
                 className="rounded-lg w-full sm:w-[540px] sm:h-[290px] object-cover"
                 width={540}
@@ -151,16 +119,23 @@ const AllProjects = () => {
               />
             </div>
           </div>
-
-          {/* Divider */}
           <div className="z-10 flex flex-col items-center justify-center h-full mt-16">
             <div className="divider w-1/2 sm:w-3/4 lg:w-1/2"></div>
           </div>
         </div>
       ))}
 
-      {/* Loading More Data */}
-      {isLoading && <Loader />}
+      {/* Show More Button */}
+      {hasMore && (
+        <div className="flex justify-center mt-8">
+          <button
+            onClick={fetchProjects}
+            className="px-4 py-2 mainBackground rounded-lg shadow-lg"
+          >
+            {isLoading ? "Loading..." : "Show More"}
+          </button>
+        </div>
+      )}
     </>
   );
 };

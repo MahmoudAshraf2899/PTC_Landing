@@ -35,7 +35,7 @@ const GuaranteeSection = () => {
 
     fetchGuaranteeData();
   }, []);
-  
+
   return isLoading ? (
     <Loader />
   ) : (
@@ -56,17 +56,17 @@ const GuaranteeSection = () => {
               className="flex flex-col items-center text-center"
             >
               {/* Circular Icon Container */}
-              <div className="flex items-center justify-center rounded-full mainBackground h-[160px] w-[160px] md:h-[200px] md:w-[200px]">
+              <div className="flex items-center  justify-center rounded-full mainBackground h-[160px] w-[160px] md:h-[200px] md:w-[200px]">
                 <Image
                   src={BASE_URL + item.icon}
                   width={80}
                   height={80}
-                  className="rounded-lg object-cover"
+                  className="rounded-lg fade-in-scale object-cover"
                   alt="guarantee_section"
                 />
               </div>
               {/* Guarantee Text */}
-              <p className="mt-4 text-white text-[14px] md:text-[16px] font-medium max-w-[250px]">
+              <p className="mt-4 fade-in-up text-white text-[14px] md:text-[16px] font-medium max-w-[250px]">
                 {item.title}
               </p>
             </div>

@@ -1,6 +1,6 @@
 const ContactUs = () => {
   return (
-    <div className="relative w-full">
+    <div className="relative w-full fade-in-scale">
       {/* Background Image */}
       <div
         className="w-full h-[500px] bg-cover bg-center relative"

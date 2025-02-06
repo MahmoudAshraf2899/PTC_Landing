@@ -13,6 +13,34 @@
     --foreground: #ededed;
   }
 }
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+@keyframes fadeInScale {
+  from {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.fade-in-scale {
+  animation: fadeInScale 0.8s ease-out;
+}
+
+.fade-in-up {
+  animation: fadeInUp 0.8s ease-out;
+}
 
 body {
   color: var(--foreground);
@@ -72,4 +100,32 @@ body {
 .SelectProjectBorder{
   border-width: 1px;
   border-color: #24BDBD;
+}
+#about-us-content ul {
+  list-style-type: disc; 
+  list-style-position: inside;
+  padding-left: 40px; 
+  --tw-text-opacity: 1;
+  color: rgb(55 65 81 / var(--tw-text-opacity, 1))
+}
+
+#about-us-content ol {
+  list-style-type: decimal; 
+  list-style-position: inside;
+  padding-left: 40px;
+  --tw-text-opacity: 1;
+  color: rgb(55 65 81 / var(--tw-text-opacity, 1))
+}
+#about-us-content .ql-align-center{
+  text-align: center;
+}
+#about-us-content{
+  font-family: 'Inter', sans-serif;
+}
+#about-us-content .ql-size-small{
+  font-size: small;
+}
+#about-us-content p{
+  --tw-text-opacity: 1;
+  color: rgb(55 65 81 / var(--tw-text-opacity, 1))
 }

@@ -107,7 +107,7 @@ const InterestSection = () => {
               <form className="max-w-sm mx-auto">
                 <select
                   id="countries"
-                  className="bg-gray-50 SelectProjectBorder mainColor text-sm   focus:outline-none rounded-xl focus:ring-teal-400 focus:border-teal-400 block w-full p-2.5"
+                  className="bg-gray-50 SelectProjectBorder fade-in-scale mainColor text-sm   focus:outline-none rounded-xl focus:ring-teal-400 focus:border-teal-400 block w-full p-2.5"
                 >
                   <option value="">Select a Project</option>
                   {projectData.map((project) => (
