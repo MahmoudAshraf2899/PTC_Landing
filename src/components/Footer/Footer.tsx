@@ -7,9 +7,12 @@ import phone from "../../../public/icons/call-svgrepo-com.png";
 import location from "../../../public/icons/location-svgrepo-com.png";
 
 const BASE_URL = "https://ptcbackend-001-site1.jtempurl.com";
-
+interface SocialMediaPreview {
+  id: string;
+  iconPath: string;
+  targetLink: string;
+}
 const Footer = () => {
-  const [isLoading, setIsLoading] = useState(false);
   const [email, setEmail] = useState("");
   const [description, setDescription] = useState("");
   const [phoneNumber, setPhoneNumber] = useState("");
@@ -20,8 +23,6 @@ const Footer = () => {
   >([]);
 
   useEffect(() => {
-    setIsLoading(true);
-
     const fetchData = async () => {
       try {
         const responses = await Promise.all([
@@ -50,14 +51,12 @@ const Footer = () => {
 
         // Map social media data
         setSocialMedia(
-          SocialMediaData.data.map((item: any) => ({
+          SocialMediaData.data.map((item: SocialMediaPreview) => ({
             id: item.id,
             iconPath: `${BASE_URL}${item.iconPath.replace("\\", "/")}`, // Ensure proper URL format
             targetLink: item.targetLink,
           }))
         );
-
-        setIsLoading(false);
       } catch (error) {
         console.error("Error fetching footer data:", error);
       }
