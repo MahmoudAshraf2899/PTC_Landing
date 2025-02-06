@@ -1,7 +1,6 @@
 "use client";
 import { useEffect, useState } from "react";
 import Loader from "../Loader/loader";
-// import Loader from "../Loader/loader";
 
 const BASE_URL = "https://ptcbackend-001-site1.jtempurl.com";
 
