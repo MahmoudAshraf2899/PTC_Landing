@@ -1,6 +1,6 @@
 "use client";
 import { useEffect, useState } from "react";
-
+import Link from "next/link";
 import Image from "next/image";
 import Loader from "../Loader/loader";
 
@@ -75,12 +75,25 @@ const HeroSection = () => {
 
           {/* Buttons */}
           <div className="mt-4 flex flex-col fade-in-scale lg:flex-row gap-4">
-            <button className="px-4 py-2  mainBackground rounded-lg hover:text-white hover:bg-black hover:border hover:border-[#24BDBD] shadow-lg w-full">
+            <Link
+              className="px-4 py-2  mainBackground rounded-lg text-center hover:text-white hover:bg-black hover:border hover:border-[#24BDBD] shadow-lg w-full"
+              href={"/Developments"}
+              onClick={() => {
+                setIsLoading(true);
+              }}
+            >
               Developments
-            </button>
-            <button className="px-4 py-2 rounded-lg  ConstuctionButton bg-inherit border MainBorder hover:text-white hover:bg-[#24BDBD] shadow-lg w-full">
+            </Link>
+
+            <Link
+              className="px-4 py-2 rounded-lg text-center  ConstuctionButton bg-inherit border MainBorder hover:text-white hover:bg-[#24BDBD] shadow-lg w-full"
+              href={"/Constructions"}
+              onClick={() => {
+                setIsLoading(true);
+              }}
+            >
               Constructions
-            </button>
+            </Link>
           </div>
 
           {/* Sub Image & Text Box */}
@@ -104,13 +117,13 @@ const HeroSection = () => {
             </div>
 
             {/* Text inside the box */}
-            <div className=" lg:ml-40 pr-5 fade-in-up">
-              <h3 className="text-lg CalistogaFont lg:text-3xl  xs:pb-2 xs:pt-2 xs:text-center xs:text-nowrap  font-semibold">
+            <div className="lg:ml-40 lg:pr-5 fade-in-up">
+              <h3 className="text-lg CalistogaFont lg:text-3xl  xs:pb-0 xs:pt-2 xs:text-center xs:text-nowrap  font-semibold">
                 {heroData?.subTitle
                   ? heroData.subTitle
                   : "Smarter Property Deals"}
               </h3>
-              <p className="heroSubTextDescription  lg:pl-4 lg:text-justify  xs:pl-4 xs:pb-2 xs:text-center">
+              <p className="heroSubTextDescription  lg:pl-4 lg:text-justify xs:p-2 xs:text-center">
                 {heroData?.subTitleDescription
                   ? heroData.subTitleDescription
                   : "Trusted by professionals for buying, selling, and investing inreal estate with advanced tools, market insights, and expert guidance."}

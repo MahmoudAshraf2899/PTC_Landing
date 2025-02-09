@@ -56,7 +56,7 @@ const PrivacyPolicy = () => {
 
             {/* Privacy Policy Section */}
             <div className="max-w-4xl mx-auto bg-white p-6 md:p-10    -mt-24 relative">
-              <h2 className="text-2xl md:text-3xl text-black CalistogaFont font-black mb-4">
+              <h2 className="lg:text-2xl xs:text-2xl xs:text-center lg:text-left md:text-3xl text-black CalistogaFont font-black mb-4">
                 Privacy Policy
               </h2>
               <div

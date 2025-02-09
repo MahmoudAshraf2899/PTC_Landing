@@ -13,6 +13,9 @@ interface Project {
 }
 const Constructions = () => {
   const [isLoading, setIsLoading] = useState(false);
+  const [imageLoaded, setImageLoaded] = useState<{ [key: string]: boolean }>(
+    {}
+  );
   const [constructionData, setConstructionData] = useState<{
     mainImage: string;
     title: string;
@@ -66,12 +69,15 @@ const Constructions = () => {
   }, []);
   return (
     <>
-      {constructionData == null || isLoading ? (
+      {!constructionData || isLoading ? (
         <Loader />
       ) : (
         <>
           <div className="relative h-screen fade-in-scale">
             {/* Background Image */}
+            {!imageLoaded["main"] && (
+              <div className="absolute inset-0 bg-gray-700 animate-pulse"></div>
+            )}
             <Image
               src={
                 constructionData?.mainImage
@@ -81,8 +87,11 @@ const Constructions = () => {
               alt="Hero Background"
               layout="fill"
               objectFit="cover"
-              className="absolute opacity-55 inset-0"
+              className={`absolute opacity-55 inset-0 transition-opacity duration-500 ${
+                imageLoaded["main"] ? "opacity-100" : "opacity-0"
+              }`}
               loading="eager"
+              onLoad={() => setImageLoaded((prev) => ({ ...prev, main: true }))}
             />
 
             <div className="relative fade-in-up z-10 flex flex-col items-center justify-center h-full px-4 sm:px-8 md:px-16">
@@ -104,36 +113,44 @@ const Constructions = () => {
                   ${index % 2 === 0 ? "sm:flex-row" : "sm:flex-row-reverse"}`}
               >
                 {/* Text Section */}
-                <div className="flex flex-col w-full sm:w-1/3 pr-4 sm:pl-10 lg:pr-28">
-                  <h2 className="text-4xl sm:text-4xl CalistogaFont font-black text-white uppercase">
-                    <Link
-                      href={`/Projects/${project.id}`}
-                      className="cursor-pointer"
-                    >
+                <div className="flex flex-col w-full sm:w-1/3  sm:pl-10 lg:pr-28">
+                  <h2 className="lg:text-4xl lg:text-left xs:text-2xl xs:text-center xs:pb-4 sm:text-4xl CalistogaFont font-black text-white uppercase">
+                    <Link href={`/Projects/${project.id}`} className="">
                       {project.title}
                     </Link>
                   </h2>
-                  <p className="leading-7 font-bold text-white interFont text-sm sm:text-base lg:text-[14px]">
+                  <p className="leading-7 font-bold lg:text-left xs:text-center xs:pb-4 xs:text-[14px] text-white interFont   sm:text-base lg:text-[14px]">
                     {project.description}
                   </p>
                 </div>
 
                 {/* Image Section */}
                 <div
-                  className={`w-full sm:w-2/3 flex flex-col               
+                  className={`w-full sm:w-2/3 flex flex-col xs:text-center xs:p-0              
               ${
                 index % 2 === 0
                   ? "items-center sm:items-end pr-4"
                   : "items-start sm:items-start pl-4"
               }   sm:pr-10 mt-8 sm:mt-0`}
                 >
+                  {!imageLoaded[project.id] && (
+                    <div className="rounded-lg w-full sm:w-[540px] sm:h-[290px] bg-gray-700 animate-pulse"></div>
+                  )}
                   <Image
                     src={project.image}
                     alt="project"
-                    className="rounded-lg w-full sm:w-[540px] sm:h-[290px] object-cover"
+                    className={`rounded-lg w-full sm:w-[540px] sm:h-[290px] object-cover transition-opacity duration-500 ${
+                      imageLoaded[project.id] ? "opacity-100" : "opacity-0"
+                    }`}
                     width={540}
                     height={290}
                     loading="eager"
+                    onLoad={() =>
+                      setImageLoaded((prev) => ({
+                        ...prev,
+                        [project.id]: true,
+                      }))
+                    }
                   />
                 </div>
               </div>

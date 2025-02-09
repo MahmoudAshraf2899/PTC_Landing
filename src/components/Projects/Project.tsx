@@ -87,7 +87,7 @@ function Project() {
             </div>
 
             {/* Gallery */}
-            <div className="max-w-4xl mx-auto bg-white p-6 md:p-10  gap-4  grid grid-cols-3 mt-24 relative">
+            <div className="max-w-4xl mx-auto bg-white p-6 md:p-10  gap-4  grid lg:grid-cols-3 xs:grid-cols-1 mt-24 relative">
               {projectData?.media.map((item) =>
                 item.mediaType == 2 ? (
                   <>

@@ -85,22 +85,23 @@ const ProjectSection = () => {
 
               <div className="p-5">
                 <a href="#">
-                  <h5 className="mb-2 font-bold interFont tracking-tight text-white text-[22px]">
+                  <h5 className="mb-2 font-bold interFont tracking-tight lg:text-left text-white xs:text-[18px] xs:text-center lg:text-[22px]">
                     {item.name}
                   </h5>
                 </a>
                 <div className="divider"></div>
-                <p className="mb-3 text-white text-[14px] interFont tracking-tight">
+                <p className="mb-3 text-white lg:text-left xs:text-[13px] xs:text-center lg:text-[14px] interFont tracking-tight">
                   {item.description}
                 </p>
-                <button className="px-1 py-2 rounded-lg ConstuctionButton bg-inherit border MainBorder hover:text-white hover:bg-[#24BDBD] shadow-lg w-full">
-                  <Link
-                    href={`/Projects/${item.id}`}
-                    className="cursor-pointer "
-                  >
-                    Show More
-                  </Link>
-                </button>
+                <Link
+                  href={`/Projects/${item.id}`}
+                  className="px-1 py-2 rounded-lg ConstuctionButton bg-inherit border MainBorder hover:text-white hover:bg-[#24BDBD] shadow-lg w-full text-center block"
+                  onClick={() => {
+                    setIsLoading(true);
+                  }}
+                >
+                  Show More
+                </Link>
               </div>
             </div>
           ))}
@@ -108,10 +109,13 @@ const ProjectSection = () => {
 
         {/* All Projects Button */}
         <div className="text-center">
-          <Link key={"Projects"} href={"/Projects"}>
-            <button className="font-normal h-14 py-3 px-12 mainBackground rounded-lg shadow-lg text-[16px]">
-              <span className="interFont">All Projects</span>
-            </button>
+          <Link
+            key={"Projects"}
+            href={"/Projects"}
+            className="
+          font-normal interFont h-14 py-3 px-12 mainBackground rounded-lg shadow-lg text-[16px]"
+          >
+            All Projects
           </Link>
         </div>
       </div>

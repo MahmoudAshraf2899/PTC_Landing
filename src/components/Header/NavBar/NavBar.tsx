@@ -6,7 +6,6 @@ import logo from "../../../../public/icons/PTCLOGO.png";
 import { Menu, X } from "lucide-react"; // For mobile menu icons
 import { usePathname } from "next/navigation";
 const BASE_URL = "https://ptcbackend-001-site1.jtempurl.com";
-
 const Navbar = () => {
   const [menuOpen, setMenuOpen] = useState(false);
   const pathname = usePathname(); // Get current route
@@ -58,7 +57,7 @@ const Navbar = () => {
               alt="Logo"
               width={160}
               height={160}
-              className="rounded-full"
+              className="rounded-full z-50"
             />
           </div>
 
@@ -68,6 +67,7 @@ const Navbar = () => {
               <Link
                 key={path}
                 href={path}
+                onClick={() => setMenuOpen(false)}
                 className={`text-[16px] z-10   ${
                   pathname === path
                     ? "text-white font-bold"
@@ -128,6 +128,7 @@ const Navbar = () => {
               <Link
                 key={path}
                 href={path}
+                onClick={() => setMenuOpen(false)}
                 className={`text-lg cursor-pointer transition ${
                   pathname === path
                     ? "text-yellow-500 font-bold"

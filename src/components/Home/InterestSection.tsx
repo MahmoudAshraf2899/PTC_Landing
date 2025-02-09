@@ -63,12 +63,12 @@ const InterestSection = () => {
         <div className="absolute inset-0 bg-black bg-opacity-50"></div>
 
         {/* Form Container */}
-        <div className="relative z-10 flex items-center justify-center h-full">
+        <div className="relative z-10 xs:p-10 lg:p-0 flex items-center justify-center h-full">
           <form className="bg-white p-8 px-14  rounded-2xl shadow-lg w-full max-w-md">
-            <h2 className="text-4xl CalistogaFont font-black tracking-tight text-gray-800 mb-6 ">
+            <h2 className="lg:text-4xl CalistogaFont xs:text-2xl text-center font-black tracking-tight text-gray-800 lg:mb-6  xs:mb-3">
               Register your interest
             </h2>
-            <span className="interFont text-center  text-black text-[14px]">
+            <span className="interFont text-center  text-black xs:text-[12px] lg:text-[14px]">
               Interested in finding out more about our projects? Fill out the
               form below and a member of our sales team will contact you
               shortly.

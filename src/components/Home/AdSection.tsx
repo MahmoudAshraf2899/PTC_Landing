@@ -52,10 +52,10 @@ const AdSection = () => {
               </>
             ) : (
               <>
-                <h3 className="text-black CalistogaFont text-3xl md:text-4xl lg:text-[42px] font-black leading-tight">
+                <h3 className="text-black CalistogaFont xs:pt-4 xs:text-3xl md:text-4xl lg:text-[42px] font-black leading-tight">
                   {adData?.title ? adData.title : "Soon PTC as a Mobile App"}
                 </h3>
-                <p className="interFont font-semibold text-black mt-4 text-base md:text-lg">
+                <p className="interFont font-semibold text-black mt-4 text-base xs:text-xs lg:text-lg">
                   {adData?.description
                     ? adData.description
                     : "Looking for your dream home or the perfect investment property? PTC is here to make your search easier, faster, and more efficient. With a sleek, user-friendly design, finding the right property has never been more convenient."}

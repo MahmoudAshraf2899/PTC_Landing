@@ -13,6 +13,14 @@ interface SocialMediaPreview {
   targetLink: string;
 }
 const Footer = () => {
+  const navLinks = [
+    { name: "Home", path: "/" },
+    { name: "Developments", path: "/Developments" },
+    { name: "Constructions", path: "/Constructions" },
+    { name: "About Us", path: "/AboutUs" },
+    { name: "Privacy Policy", path: "/PrivacyPolicy" },
+    { name: "Contact Us", path: "/ContactUs" },
+  ];
   const [email, setEmail] = useState("");
   const [description, setDescription] = useState("");
   const [phoneNumber, setPhoneNumber] = useState("");
@@ -69,11 +77,9 @@ const Footer = () => {
     <footer className="bg-gradient-to-b from-[#292F33] to-[#000000] mt-20 px-6 md:px-12 lg:px-20">
       <div className="w-full pt-14 pb-14 grid grid-cols-1 md:grid-cols-3 gap-10 text-center md:text-left">
         {/* Left Section */}
-        <div className="flex flex-col items-center md:items-start">
+        <div className="flex flex-col items-center md:items-start text-white">
           <Image src={logo} alt="Logo" className="w-32" />
-          <p className="mt-4 interFont text-white text-[14px] max-w-xs">
-            {description}
-          </p>
+          <p className="mt-4 interFont text-[14px] max-w-xs">{description}</p>
 
           {/* Social Media Icons */}
           <div className="flex justify-center md:justify-start mt-4 space-x-4">
@@ -82,6 +88,7 @@ const Footer = () => {
                 key={item.id}
                 href={item.targetLink}
                 target="_blank"
+                rel="noopener noreferrer"
                 className="hover:opacity-75"
               >
                 <Image
@@ -97,19 +104,12 @@ const Footer = () => {
         </div>
 
         {/* Center Section */}
-        <div className="flex flex-col items-center">
+        <div className="flex flex-col items-center md:items-center lg:items-start">
           <ul className="space-y-2 text-white text-[14px]">
-            {[
-              "Home",
-              "About Us",
-              "Developments",
-              "Constructions",
-              "Contact Us",
-              "Privacy Policy",
-            ].map((item, index) => (
+            {navLinks.map((item, index) => (
               <li key={index}>
-                <a href="#" className="hover:text-gray-400">
-                  {item}
+                <a href={item.path} className="hover:text-gray-400">
+                  {item.name}
                 </a>
               </li>
             ))}
@@ -117,25 +117,46 @@ const Footer = () => {
         </div>
 
         {/* Right Section */}
-        <div className="flex flex-col items-center md:items-start space-y-4">
+        <div className="flex flex-col items-center md:items-start space-y-4 text-white">
           <div className="flex items-center gap-2">
-            <Image src={emailIcon} alt="email" width={30} height={30} />
-            <p className="interFont text-[13px] text-white">
-              <a href={`mailto:${email}`}>{email}</a>
+            <Image
+              src={emailIcon}
+              alt="email"
+              width={25}
+              height={25}
+              className="block xs:hidden"
+            />
+            <p className="interFont text-[13px]">
+              <a href={`mailto:${email}`} className="hover:underline">
+                {email}
+              </a>
             </p>
           </div>
-
-          <div className="flex flex-col items-center md:items-start">
-            <div className="flex items-center gap-2">
-              <Image src={phone} alt="phone" width={30} height={30} />
-              <p className="interFont text-[13px] text-white">{phoneNumber}</p>
-            </div>
+          <div className="flex items-center gap-2">
+            <Image
+              src={phone}
+              alt="phone"
+              width={25}
+              height={25}
+              className="block xs:hidden"
+            />
+            <p className="interFont text-[13px]">{phoneNumber}</p>
           </div>
-
           <div className="flex items-start gap-2 max-w-xs">
-            <Image src={location} alt="location" width={30} height={30} />
-            <p className="interFont text-[13px] text-white">
-              <a href={googleMaps} target="_blank">
+            <Image
+              src={location}
+              alt="location"
+              width={25}
+              height={25}
+              className="block xs:hidden"
+            />
+            <p className="interFont text-[13px]">
+              <a
+                href={googleMaps}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="hover:underline"
+              >
                 {address}
               </a>
             </p>

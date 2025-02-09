@@ -54,7 +54,7 @@ const AboutUs = () => {
               }}
             >
               <div className="absolute inset-0 bg-black bg-opacity-50 flex items-center justify-center">
-                <h1 className="text-white CalistogaFont-LessWeight text-center lg:text-3xl md:text-2xl font-extralight">
+                <h1 className="text-white CalistogaFont-LessWeight text-center xs:text-[14px] lg:text-3xl md:text-2xl font-extralight">
                   {aboutUsData?.title
                     ? aboutUsData.title
                     : "Developing Vibrant Residential, Recreational, Tourism, and Commercial Projects"}
@@ -64,7 +64,7 @@ const AboutUs = () => {
 
             {/* About Us Section */}
             <div className="max-w-4xl mx-auto bg-white p-6 md:p-10    -mt-24 relative">
-              <h2 className="text-2xl md:text-3xl text-black CalistogaFont font-black mb-4">
+              <h2 className="lg:text-2xl xs:text-2xl xs:text-center lg:text-left md:text-3xl text-black CalistogaFont font-black mb-4">
                 About Us
               </h2>
               <div
