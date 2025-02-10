@@ -46,7 +46,7 @@ const HeroSection = () => {
   return (
     <>
       {isLoading && <Loader />}
-      <div className="relative flex flex-col lg:flex-row items-center lg:items-stretch bg-black p-6 lg:p-28 text-white rounded-lg overflow-hidden">
+      <div className="relative flex flex-col lg:flex-row items-center lg:items-stretch  p-6 lg:p-28 text-white rounded-lg overflow-hidden">
         {/* Left Side - Main Image */}
         <div className="w-full lg:w-2/4 relative mb-6 lg:mb-0">
           {heroData == null ? (

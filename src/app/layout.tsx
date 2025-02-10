@@ -33,10 +33,11 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${calistoga.variable}  ${geistMono.variable}  `}>
+      <body className={`${calistoga.variable}  ${geistMono.variable}`}>
         <Navbar />
 
-        <main>{children}</main>
+        <main className="bg-black">{children}</main>
+        <div className="w-full h-full bg-black"></div>
         <Footer />
       </body>
     </html>

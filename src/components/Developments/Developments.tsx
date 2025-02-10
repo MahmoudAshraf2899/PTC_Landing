@@ -73,7 +73,7 @@ const Developments = () => {
         <Loader />
       ) : (
         <>
-          <div className="relative h-screen fade-in-scale">
+          <div className="relative h-screen fade-in-scale pb-20">
             {/* Background Image */}
             {!imageLoaded["main"] && (
               <div className="absolute inset-0 bg-gray-700 animate-pulse"></div>

@@ -43,7 +43,7 @@ const AboutUs = () => {
         <Loader />
       ) : (
         <>
-          <div className="relative w-full fade-in-scale">
+          <div className="relative w-full fade-in-scale pb-20">
             {/* Background Image */}
             <div
               className="w-full h-[500px] bg-cover bg-center relative"

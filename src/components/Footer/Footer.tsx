@@ -74,7 +74,7 @@ const Footer = () => {
   }, []);
 
   return (
-    <footer className="bg-gradient-to-b from-[#292F33] to-[#000000] mt-20 px-6 md:px-12 lg:px-20">
+    <footer className="bg-gradient-to-b from-[#292F33] to-[#000000]  px-6 md:px-12 lg:px-20">
       <div className="w-full pt-14 pb-14 grid grid-cols-1 md:grid-cols-3 gap-10 text-center md:text-left">
         {/* Left Section */}
         <div className="flex flex-col items-center md:items-start text-white">

@@ -40,7 +40,7 @@ const GuaranteeSection = () => {
     <Loader />
   ) : (
     <>
-      <div className="mt-20 px-6">
+      <div className="mt-20 px-6 bg-black">
         {/* Section Title */}
         <h2 className="text-center CalistogaFont text-3xl md:text-5xl font-bold text-white">
           {guaranteeData?.title

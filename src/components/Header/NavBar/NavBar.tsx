@@ -48,7 +48,7 @@ const Navbar = () => {
   }, []);
   return (
     <>
-      <nav className="bg-opacity-60 bg-inherit z-50 absolute w-full fade-in-scale px-6 py-4">
+      <nav className="!bg-opacity-60   z-50 absolute w-full fade-in-scale px-6 py-4">
         <div className="mx-auto flex justify-between items-center">
           {/* Logo */}
           <div className="flex items-center">
@@ -105,9 +105,9 @@ const Navbar = () => {
                   fill="#EEE"
                 />
               </svg>
-              <span>Introduction</span>
+              <span className="text-white">Introduction</span>
             </button>
-            <button className="px-4 py-2 mainBackground rounded-lg shadow-lg">
+            <button className="px-4 py-2 mainBackground text-white rounded-lg shadow-lg">
               Enquire
             </button>
           </div>

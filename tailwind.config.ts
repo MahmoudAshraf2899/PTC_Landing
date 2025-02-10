@@ -10,6 +10,14 @@ module.exports = {
       satoshi: ['Satoshi', 'sans-serif'],
     
     },
+    extend: {
+      colors: {
+        background: {
+          light: "#ffffff",
+          dark: "#0a0a0a",
+        },
+      },
+    },
     screens: {
       xs: "300px",
       sm: "480px",

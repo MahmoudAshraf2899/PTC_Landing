@@ -6,7 +6,7 @@ import AdSection from "@/components/Home/AdSection";
 
 export default function Home() {
   return (
-    <section>
+    <section className="pb-20">
       {/* Hero Section */}
       <Hero />
       {/* Guarantee Section */}
