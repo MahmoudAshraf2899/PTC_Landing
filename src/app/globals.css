@@ -33,7 +33,9 @@
     transform: scale(1);
   }
 }
-
+html {
+  scroll-behavior: smooth;
+}
 .fade-in-scale {
   animation: fadeInScale 0.8s ease-out;
 }

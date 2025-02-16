@@ -49,7 +49,10 @@ const InterestSection = () => {
   return (
     <>
       {isLoading ? <Loader /> : null}
-      <div className="relative h-screen bg-gray-800 mt-28">
+      <div
+        className="relative h-screen bg-gray-800 mt-28"
+        id="interest-section"
+      >
         {/* Background Image */}
         <Image
           src={subHeroImage}

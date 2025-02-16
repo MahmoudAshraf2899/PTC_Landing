@@ -19,6 +19,7 @@ const Navbar = () => {
     { name: "About Us", path: "/AboutUs" },
     { name: "Privacy Policy", path: "/PrivacyPolicy" },
     { name: "Contact Us", path: "/ContactUs" },
+    { name: "Enquire", path: "/#interest-section" }, // Add this new link
   ];
 
   useEffect(() => {
@@ -107,9 +108,14 @@ const Navbar = () => {
               </svg>
               <span className="text-white">Introduction</span>
             </button>
-            <button className="px-4 py-2 mainBackground text-white rounded-lg shadow-lg">
+            <Link
+              key={"/#interest-section"}
+              href={"/#interest-section"}
+              onClick={() => setMenuOpen(false)}
+              className="px-12 py-2 mainBackground text-white rounded-lg shadow-lg"
+            >
               Enquire
-            </button>
+            </Link>
           </div>
 
           {/* Mobile Menu Button */}

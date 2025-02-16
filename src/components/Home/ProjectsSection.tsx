@@ -85,9 +85,15 @@ const ProjectSection = () => {
 
               <div className="p-5">
                 <a href="#">
-                  <h5 className="mb-2 font-bold interFont tracking-tight lg:text-left text-white xs:text-[18px] xs:text-center lg:text-[22px]">
+                  <Link
+                    href={`/Projects/${item.id}`}
+                    onClick={() => {
+                      setIsLoading(true);
+                    }}
+                    className="mb-2 font-bold interFont tracking-tight lg:text-left text-white xs:text-[18px] xs:text-center lg:text-[22px]"
+                  >
                     {item.name}
-                  </h5>
+                  </Link>
                 </a>
                 <div className="divider"></div>
                 <p className="mb-3 text-white lg:text-left xs:text-[13px] xs:text-center lg:text-[14px] interFont tracking-tight">
