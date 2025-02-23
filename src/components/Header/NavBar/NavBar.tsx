@@ -19,7 +19,7 @@ const Navbar = () => {
     { name: "About Us", path: "/AboutUs" },
     { name: "Privacy Policy", path: "/PrivacyPolicy" },
     { name: "Contact Us", path: "/ContactUs" },
-    { name: "Enquire", path: "/#interest-section" }, // Add this new link
+    // { name: "Enquire", path: "/#interest-section" }, // Add this new link
   ];
 
   useEffect(() => {
@@ -27,19 +27,13 @@ const Navbar = () => {
 
     const fetchData = async () => {
       try {
-        if (localStorage.getItem("intro") == null) {
-          const response = await fetch(
-            `${BASE_URL}/api/AppSettings/introduction_video`
-          ); // Replace with your actual API URL
-          if (!response.ok)
-            throw new Error("Failed to fetch introduction_video");
+        const response = await fetch(
+          `${BASE_URL}/api/AppSettings/introduction_video`
+        ); // Replace with your actual API URL
+        if (!response.ok) throw new Error("Failed to fetch introduction_video");
 
-          const data = await response.json();
-          setIntroVideo(data.data.value);
-          localStorage.setItem("intro", data.data.value);
-        } else {
-          setIntroVideo(localStorage.getItem("intro") ?? "");
-        }
+        const data = await response.json();
+        setIntroVideo(data.data.value);
       } catch (error) {
         console.error("Error fetching about us data:", error);
       }
@@ -53,13 +47,15 @@ const Navbar = () => {
         <div className="mx-auto flex justify-between items-center">
           {/* Logo */}
           <div className="flex items-center">
-            <Image
-              src={logo}
-              alt="Logo"
-              width={160}
-              height={160}
-              className="rounded-full z-50"
-            />
+            <Link key={"logo"} href={"/"} onClick={() => setMenuOpen(false)}>
+              <Image
+                src={logo}
+                alt="Logo"
+                width={160}
+                height={160}
+                className="rounded-full z-50 cursor-pointer"
+              />
+            </Link>
           </div>
 
           {/* Desktop Menu */}

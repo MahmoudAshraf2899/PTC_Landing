@@ -124,7 +124,7 @@ const Footer = () => {
               alt="email"
               width={25}
               height={25}
-              className="block xs:hidden"
+              className="lg:block xs:hidden"
             />
             <p className="interFont text-[13px]">
               <a href={`mailto:${email}`} className="hover:underline">
@@ -138,7 +138,7 @@ const Footer = () => {
               alt="phone"
               width={25}
               height={25}
-              className="block xs:hidden"
+              className="lg:block xs:hidden"
             />
             <p className="interFont text-[13px]">{phoneNumber}</p>
           </div>
@@ -148,7 +148,7 @@ const Footer = () => {
               alt="location"
               width={25}
               height={25}
-              className="block xs:hidden"
+              className="lg:block xs:hidden"
             />
             <p className="interFont text-[13px]">
               <a
@@ -162,6 +162,11 @@ const Footer = () => {
             </p>
           </div>
         </div>
+      </div>
+      <div className="flex justify-center pb-4">
+        <h2 className="interFont text-white text-[12px]">
+          @{new Date().getFullYear()} PTC Developments. All Rights Reserved.
+        </h2>
       </div>
     </footer>
   );

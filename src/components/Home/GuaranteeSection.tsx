@@ -40,39 +40,43 @@ const GuaranteeSection = () => {
     <Loader />
   ) : (
     <>
-      <div className="mt-20 px-6 bg-black">
-        {/* Section Title */}
-        <h2 className="text-center CalistogaFont text-3xl md:text-5xl font-bold text-white">
-          {guaranteeData?.title
-            ? guaranteeData.title
-            : "Your safety is our goal!"}
-        </h2>
+      {guaranteeData?.isActive == false ? null : (
+        <>
+          <div className="mt-20 px-6 bg-black">
+            {/* Section Title */}
+            <h2 className="text-center CalistogaFont text-3xl md:text-5xl font-bold text-white">
+              {guaranteeData?.title
+                ? guaranteeData.title
+                : "Your safety is our goal!"}
+            </h2>
 
-        {/* Guarantee Cards Grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-6 mt-10 mb-10">
-          {guaranteeData?.nodes.map((item) => (
-            <div
-              key={item.id}
-              className="flex flex-col items-center text-center"
-            >
-              {/* Circular Icon Container */}
-              <div className="flex items-center  justify-center rounded-full mainBackground h-[160px] w-[160px] md:h-[200px] md:w-[200px]">
-                <Image
-                  src={BASE_URL + item.icon}
-                  width={80}
-                  height={80}
-                  className="rounded-lg fade-in-scale object-cover"
-                  alt="guarantee_section"
-                />
-              </div>
-              {/* Guarantee Text */}
-              <p className="mt-4 fade-in-up text-white text-[14px] md:text-[16px] font-medium max-w-[250px]">
-                {item.title}
-              </p>
+            {/* Guarantee Cards Grid */}
+            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-6 mt-10 mb-10">
+              {guaranteeData?.nodes.map((item) => (
+                <div
+                  key={item.id}
+                  className="flex flex-col items-center text-center"
+                >
+                  {/* Circular Icon Container */}
+                  <div className="flex items-center  justify-center rounded-full mainBackground h-[160px] w-[160px] md:h-[200px] md:w-[200px]">
+                    <Image
+                      src={BASE_URL + item.icon}
+                      width={80}
+                      height={80}
+                      className="rounded-lg fade-in-scale object-cover"
+                      alt="guarantee_section"
+                    />
+                  </div>
+                  {/* Guarantee Text */}
+                  <p className="mt-4 fade-in-up text-white text-[14px] md:text-[16px] font-medium max-w-[250px]">
+                    {item.title}
+                  </p>
+                </div>
+              ))}
             </div>
-          ))}
-        </div>
-      </div>
+          </div>
+        </>
+      )}
     </>
   );
 };

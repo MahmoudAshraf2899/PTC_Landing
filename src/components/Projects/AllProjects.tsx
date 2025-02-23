@@ -130,10 +130,10 @@ const AllProjects = () => {
 
       {/* Show More Button */}
       {hasMore && (
-        <div className="flex justify-center mt-8">
+        <div className="flex justify-center pb-10">
           <button
             onClick={fetchProjects}
-            className="px-4 py-2 mainBackground rounded-lg shadow-lg"
+            className="px-4 py-2 w-[28%] mainBackground rounded-lg shadow-lg"
           >
             {isLoading ? "Loading..." : "Show More"}
           </button>

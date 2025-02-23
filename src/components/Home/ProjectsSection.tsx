@@ -66,24 +66,24 @@ const ProjectSection = () => {
           {projectData?.map((item) => (
             <div
               key={item.id}
-              className="max-w-sm projectsSectionBackground rounded-lg shadow-sm mx-auto"
+              className="max-w-sm projectsSectionBackground rounded-lg shadow-sm mx-auto flex flex-col h-full"
             >
+              {/* Image Section */}
               {projectData == null ? (
-                <>
-                  <div className="skeleton h-full"></div>
-                </>
+                <div className="skeleton h-[310px] w-full"></div>
               ) : (
                 <Image
                   src={item.image == undefined ? subHeroImage : item.image}
                   alt={item.name}
-                  className="max-w-full w-full h-[310px] rounded-lg object-cover"
+                  className="w-full h-[310px] rounded-lg object-cover"
                   width={500}
                   height={500}
                   priority
                 />
               )}
 
-              <div className="p-5">
+              {/* Content Section */}
+              <div className="p-5 flex flex-col flex-grow">
                 <a href="#">
                   <Link
                     href={`/Projects/${item.id}`}
@@ -96,12 +96,16 @@ const ProjectSection = () => {
                   </Link>
                 </a>
                 <div className="divider"></div>
-                <p className="mb-3 text-white lg:text-left xs:text-[13px] xs:text-center lg:text-[14px] interFont tracking-tight">
+
+                {/* Description - Takes up space but doesn't push the button down */}
+                <p className="text-white lg:text-left xs:text-[13px] xs:text-center lg:text-[14px] interFont tracking-tight flex-grow overflow-hidden">
                   {item.description}
                 </p>
+
+                {/* Button - Always at Bottom */}
                 <Link
                   href={`/Projects/${item.id}`}
-                  className="px-1 py-2 rounded-lg ConstuctionButton bg-inherit border MainBorder hover:text-white hover:bg-[#24BDBD] shadow-lg w-full text-center block"
+                  className="px-1 py-2 rounded-lg ConstuctionButton bg-inherit border MainBorder hover:text-white hover:bg-[#24BDBD] shadow-lg w-full text-center block mt-auto"
                   onClick={() => {
                     setIsLoading(true);
                   }}

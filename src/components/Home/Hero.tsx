@@ -117,13 +117,13 @@ const HeroSection = () => {
             </div>
 
             {/* Text inside the box */}
-            <div className="lg:ml-40 lg:pr-5 fade-in-up">
+            <div className="lg:pr-5 fade-in-up">
               <h3 className="text-lg CalistogaFont lg:text-3xl  xs:pb-0 xs:pt-2 xs:text-center xs:text-nowrap  font-semibold">
                 {heroData?.subTitle
                   ? heroData.subTitle
                   : "Smarter Property Deals"}
               </h3>
-              <p className="heroSubTextDescription  lg:pl-4 lg:text-justify xs:p-2 xs:text-center">
+              <p className="heroSubTextDescription lg:pl-[100px]  lg:text-justify xs:p-2 xs:text-center">
                 {heroData?.subTitleDescription
                   ? heroData.subTitleDescription
                   : "Trusted by professionals for buying, selling, and investing inreal estate with advanced tools, market insights, and expert guidance."}
