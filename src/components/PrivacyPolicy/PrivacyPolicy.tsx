@@ -55,7 +55,15 @@ const PrivacyPolicy = () => {
                   ? `url(${privacyData.mainImage})`
                   : "url('../../icons/hero.jpg')",
               }}
-            ></div>
+            >
+              <div className="absolute inset-0 bg-black bg-opacity-50 flex items-center justify-center">
+                <h1 className="text-white CalistogaFont-LessWeight text-center xs:text-[14px] lg:text-3xl md:text-2xl font-extralight">
+                  {privacyData?.title
+                    ? privacyData.title
+                    : "Developing Vibrant Residential, Recreational, Tourism, and Commercial Projects"}
+                </h1>
+              </div>
+            </div>
 
             {/* Privacy Policy Section */}
             <div className="max-w-4xl mx-auto bg-white p-6 md:p-10    -mt-24 relative">

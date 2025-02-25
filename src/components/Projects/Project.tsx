@@ -80,7 +80,7 @@ function Project() {
               <div className="absolute inset-0 bg-black bg-opacity-50 flex items-center justify-center"></div>
             </div>
 
-            <div className="max-w-4xl mx-auto bg-white p-6 md:p-10    -mt-48 relative">
+            <div className="max-w-4xl min-h-[250px] mx-auto bg-white p-6 md:p-10 -mt-48 relative">
               {/*  Project Name */}
               <h2 className="text-2xl md:text-3xl uppercase text-black CalistogaFont font-black mb-4">
                 {projectData?.title}
@@ -90,7 +90,7 @@ function Project() {
             </div>
 
             {/* Gallery */}
-            <div className="max-w-4xl mx-auto bg-white p-6 md:p-10  gap-4  grid lg:grid-cols-3 xs:grid-cols-1 mt-24 relative">
+            <div className="max-w-4xl mb-4  mx-auto bg-white p-6 md:p-10  gap-4  grid lg:grid-cols-3 xs:grid-cols-1 mt-24 relative">
               {projectData?.media.map((item) =>
                 item.mediaType == 2 ? (
                   <>

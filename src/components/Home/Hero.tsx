@@ -8,6 +8,10 @@ const BASE_URL = "https://ptcbackend-001-site1.jtempurl.com";
 
 const HeroSection = () => {
   const [isLoading, setIsLoading] = useState(false);
+  const [imageLoaded, setImageLoaded] = useState<{ [key: string]: boolean }>(
+    {}
+  );
+
   const [heroData, setHeroData] = useState<{
     mainImage: string;
     mainTitle: string;
@@ -45,10 +49,15 @@ const HeroSection = () => {
   }, []);
   return (
     <>
-      {isLoading && <Loader />}
-      <div className="relative flex flex-col lg:flex-row items-center lg:items-stretch  p-6 lg:p-28 text-white rounded-lg overflow-hidden">
+      {isLoading || !imageLoaded["main"] || !imageLoaded["sub"] ? (
+        <Loader />
+      ) : null}
+      <div className="relative fade-in-scale flex flex-col lg:flex-row items-center lg:items-stretch  p-6 lg:p-28 text-white rounded-lg overflow-hidden">
         {/* Left Side - Main Image */}
         <div className="w-full lg:w-2/4 relative mb-6 lg:mb-0">
+          {!imageLoaded["main"] || !imageLoaded["sub"] ? (
+            <div className=" inset-0 object-cover bg-gray-700 animate-pulse"></div>
+          ) : null}
           {heroData == null ? (
             <>
               <div className="skeleton h-full"></div>
@@ -57,10 +66,11 @@ const HeroSection = () => {
             <Image
               src={heroData?.mainImage ? heroData.mainImage : ""}
               alt="Main Hero Image"
-              className="object-cover max-h-96 rounded-lg fade-in-scale"
+              className="object-cover absolute max-h-96 rounded-lg fade-in-scale"
               width={650} // Fixed width
               height={450} // Fixed height
               priority
+              onLoad={() => setImageLoaded((prev) => ({ ...prev, main: true }))}
             />
           )}
         </div>
@@ -112,6 +122,9 @@ const HeroSection = () => {
                   width={650} // Fixed width
                   height={850} // Fixed height
                   priority
+                  onLoad={() =>
+                    setImageLoaded((prev) => ({ ...prev, sub: true }))
+                  }
                 />
               )}
             </div>

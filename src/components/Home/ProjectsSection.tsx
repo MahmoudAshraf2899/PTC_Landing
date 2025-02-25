@@ -14,6 +14,8 @@ interface Project {
 }
 const ProjectSection = () => {
   const [isLoading, setIsLoading] = useState(false);
+
+  
   const [projectData, setProjectsData] = useState<
     {
       id: string;
@@ -66,7 +68,7 @@ const ProjectSection = () => {
           {projectData?.map((item) => (
             <div
               key={item.id}
-              className="max-w-sm projectsSectionBackground rounded-lg shadow-sm mx-auto flex flex-col h-full"
+              className="max-w-sm w-full projectsSectionBackground rounded-lg shadow-sm mx-auto flex flex-col h-full"
             >
               {/* Image Section */}
               {projectData == null ? (
@@ -98,14 +100,14 @@ const ProjectSection = () => {
                 <div className="divider"></div>
 
                 {/* Description - Takes up space but doesn't push the button down */}
-                <p className="text-white lg:text-left xs:text-[13px] xs:text-center lg:text-[14px] interFont tracking-tight flex-grow overflow-hidden">
+                <p className="text-white mb-2 lg:text-left xs:text-[13px] xs:text-center lg:text-[14px] interFont tracking-tight flex-grow overflow-hidden">
                   {item.description}
                 </p>
 
                 {/* Button - Always at Bottom */}
                 <Link
                   href={`/Projects/${item.id}`}
-                  className="px-1 py-2 rounded-lg ConstuctionButton bg-inherit border MainBorder hover:text-white hover:bg-[#24BDBD] shadow-lg w-full text-center block mt-auto"
+                  className="px-1 py-2  rounded-lg ConstuctionButton bg-inherit border MainBorder hover:text-white hover:bg-[#24BDBD] shadow-lg w-full text-center block mt-auto"
                   onClick={() => {
                     setIsLoading(true);
                   }}
