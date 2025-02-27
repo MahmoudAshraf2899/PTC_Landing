@@ -5,6 +5,7 @@ import { Geist_Mono } from "next/font/google";
 import "./globals.css";
 import Navbar from "@/components/Header/NavBar/NavBar";
 import Footer from "@/components/Footer/Footer";
+import { ToastContainer } from "react-toastify";
 
 const geistMono = Geist_Mono({
   variable: "--font-geist-mono",
@@ -30,6 +31,7 @@ export default function RootLayout({
     <html lang="en">
       <body className={`${calistoga.variable}  ${geistMono.variable}`}>
         <Navbar />
+        <ToastContainer />
 
         <main className="bg-black">{children}</main>
         <div className="w-full h-full bg-black"></div>
