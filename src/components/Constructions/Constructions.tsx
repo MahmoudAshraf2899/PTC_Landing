@@ -71,7 +71,7 @@ const Constructions = () => {
   return (
     <>
       {useScrollToTop()}
-
+      {isLoading || !imageLoaded["main"] ? <Loader /> : null}
       {!constructionData || isLoading ? (
         <Loader />
       ) : (
@@ -129,7 +129,7 @@ const Constructions = () => {
 
                 {/* Image Section */}
                 <div
-                  className={`w-full sm:w-2/3 flex flex-col xs:text-center xs:p-0              
+                  className={`w-full sm:w-2/3 flex flex-col xs:text-center xs:p-0   sm:pl-10 lg:pr-28           
               ${
                 index % 2 === 0
                   ? "items-center sm:items-end pr-4"
