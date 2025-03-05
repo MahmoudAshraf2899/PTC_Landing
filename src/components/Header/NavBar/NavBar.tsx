@@ -5,7 +5,7 @@ import Image from "next/image";
 import logo from "../../../../public/icons/PTCLOGO.png";
 import { Menu, X } from "lucide-react"; // For mobile menu icons
 import { usePathname } from "next/navigation";
-const BASE_URL = "https://ptcbackend-001-site1.jtempurl.com";
+const BASE_URL = "http://ptc-api.ptceg.com";
 const Navbar = () => {
   const [menuOpen, setMenuOpen] = useState(false);
   const pathname = usePathname(); // Get current route

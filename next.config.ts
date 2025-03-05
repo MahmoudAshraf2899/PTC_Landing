@@ -5,8 +5,8 @@ const nextConfig: NextConfig = {
   images: {
     remotePatterns: [
       {
-        protocol: "https",
-        hostname: "ptcbackend-001-site1.jtempurl.com",
+        protocol: "http",
+        hostname: "ptc-api.ptceg.com",
       },
     ],
   },

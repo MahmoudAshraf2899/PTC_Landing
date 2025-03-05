@@ -6,7 +6,7 @@ import Loader from "../Loader/loader";
 import { useScrollToTop } from "../useScrollToTop/useScrollToTop";
 import { toast } from "react-toastify";
 
-const BASE_URL = "https://ptcbackend-001-site1.jtempurl.com";
+const BASE_URL = "http://ptc-api.ptceg.com";
 
 const ContactUs = () => {
   const [isLoading, setIsLoading] = useState(false);

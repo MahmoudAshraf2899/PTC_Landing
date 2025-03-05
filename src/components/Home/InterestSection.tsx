@@ -5,7 +5,7 @@ import Image from "next/image";
 import Loader from "../Loader/loader";
 import { toast } from "react-toastify";
 
-const BASE_URL = "https://ptcbackend-001-site1.jtempurl.com";
+const BASE_URL = "http://ptc-api.ptceg.com";
 
 interface Project {
   id: string;

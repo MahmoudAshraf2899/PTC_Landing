@@ -6,7 +6,7 @@ import emailIcon from "../../../public/icons/email-open-svgrepo-com.png";
 import phone from "../../../public/icons/call-svgrepo-com.png";
 import location from "../../../public/icons/location-svgrepo-com.png";
 
-const BASE_URL = "https://ptcbackend-001-site1.jtempurl.com";
+const BASE_URL = "http://ptc-api.ptceg.com";
 interface SocialMediaPreview {
   id: string;
   iconPath: string;

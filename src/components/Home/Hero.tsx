@@ -4,7 +4,7 @@ import Link from "next/link";
 import Image from "next/image";
 import Loader from "../Loader/loader";
 
-const BASE_URL = "https://ptcbackend-001-site1.jtempurl.com";
+const BASE_URL = "http://ptc-api.ptceg.com";
 
 const HeroSection = () => {
   const [isLoading, setIsLoading] = useState(false);
@@ -72,7 +72,7 @@ const HeroSection = () => {
                 <Image
                   src={heroData?.mainImage ? heroData.mainImage : ""}
                   alt="Main Hero Image"
-                  className="object-cover absolute max-h-96 rounded-lg fade-in-scale"
+                  className="object-cover  max-h-96 rounded-lg fade-in-scale"
                   width={650} // Fixed width
                   height={450} // Fixed height
                   priority

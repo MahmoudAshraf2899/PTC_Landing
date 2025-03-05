@@ -5,7 +5,7 @@ import Loader from "../Loader/loader";
 import subHeroImage from "../../../public/icons/SubHeroMain.jpg";
 import Link from "next/link";
 
-const BASE_URL = "https://ptcbackend-001-site1.jtempurl.com";
+const BASE_URL = "http://ptc-api.ptceg.com";
 interface Project {
   id: string;
   name: string;

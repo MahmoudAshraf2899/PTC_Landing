@@ -2,7 +2,7 @@
 import Image from "next/image";
 import { useEffect, useState } from "react";
 import Loader from "../Loader/loader";
-const BASE_URL = "https://ptcbackend-001-site1.jtempurl.com";
+const BASE_URL = "http://ptc-api.ptceg.com";
 
 const GuaranteeSection = () => {
   const [isLoading, setIsLoading] = useState(false);
