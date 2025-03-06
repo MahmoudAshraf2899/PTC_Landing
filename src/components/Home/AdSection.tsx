@@ -80,7 +80,7 @@ const AdSection = () => {
                     width={300}
                     height={300}
                     priority
-                    className="object-cover max-h-[500px]  rounded-lg max-w-full h-auto"
+                    className="object-cover max-h-[800px]  rounded-lg max-w-full h-auto"
                     alt="PTC Mobile App Ad"
                   />
                 )}

@@ -62,7 +62,7 @@ const HeroSection = () => {
             {/* Left Side - Main Image */}
             <div className="w-full lg:w-2/4 relative mb-6 lg:mb-0">
               {!imageLoaded["main"] || !imageLoaded["sub"] ? (
-                <div className=" inset-0 object-cover bg-gray-700 animate-pulse"></div>
+                <div className=" inset-0 object-cover bg-gray-700 max-h-96 animate-pulse"></div>
               ) : null}
               {heroData == null ? (
                 <>
@@ -72,7 +72,7 @@ const HeroSection = () => {
                 <Image
                   src={heroData?.mainImage ? heroData.mainImage : ""}
                   alt="Main Hero Image"
-                  className="object-cover  max-h-96 rounded-lg fade-in-scale"
+                  className="object-cover h-full  max-h-96 rounded-lg fade-in-scale"
                   width={650} // Fixed width
                   height={450} // Fixed height
                   priority

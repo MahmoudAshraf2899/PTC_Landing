@@ -11,7 +11,7 @@ const Navbar = () => {
   const pathname = usePathname(); // Get current route
   const [showVideo, setShowVideo] = useState(false);
   const [introVideo, setIntroVideo] = useState("");
-
+  const [isLoading, setIsLoading] = useState(false);
   const navLinks = [
     { name: "Home", path: "/" },
     { name: "Developments", path: "/Developments" },
@@ -19,7 +19,6 @@ const Navbar = () => {
     { name: "About Us", path: "/AboutUs" },
     { name: "Privacy Policy", path: "/PrivacyPolicy" },
     { name: "Contact Us", path: "/ContactUs" },
-    // { name: "Enquire", path: "/#interest-section" }, // Add this new link
   ];
 
   useEffect(() => {
@@ -43,7 +42,7 @@ const Navbar = () => {
   }, []);
   return (
     <>
-      <nav className="!bg-opacity-60   z-50 absolute w-full fade-in-scale px-6 py-4">
+      <nav className="!bg-opacity-60 lg:absolute z-50  w-full fade-in-scale px-6 py-4">
         <div className="mx-auto flex justify-between items-center">
           {/* Logo */}
           <div className="flex items-center">
@@ -146,9 +145,14 @@ const Navbar = () => {
             >
               <span>Introduction</span>
             </button>
-            <button className="px-4 py-2 mainBackground rounded-lg shadow-lg">
+            <Link
+              key={"/#interest-section"}
+              href={"/#interest-section"}
+              onClick={() => setMenuOpen(false)}
+              className="px-12 py-2 mainBackground text-white rounded-lg shadow-lg"
+            >
               Enquire
-            </button>
+            </Link>
           </div>
         )}
       </nav>
@@ -169,7 +173,12 @@ const Navbar = () => {
             >
               ✖
             </button>
-
+            {/* Loader */}
+            {isLoading && (
+              <div className="absolute inset-0 flex items-center justify-center bg-black bg-opacity-50">
+                <div className="animate-spin h-10 w-10 border-t-4 border-white rounded-full"></div>
+              </div>
+            )}
             {/* Embedded Video */}
             <div className="relative w-full pt-[56.25%]">
               <iframe
@@ -179,6 +188,7 @@ const Navbar = () => {
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
                 referrerPolicy="strict-origin-when-cross-origin"
                 allowFullScreen
+                onLoad={() => setIsLoading(false)} // Hide loader when video loads
               ></iframe>
             </div>
           </div>
