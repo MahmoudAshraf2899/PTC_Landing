@@ -115,39 +115,34 @@ const HeroSection = () => {
               </div>
 
               {/* Sub Image & Text Box */}
-              <div className="relative mt-8 heroSubTextBackground lg:p-4 rounded-lg shadow-lg">
+              <div className="relative mt-8 heroSubTextBackground p-4 rounded-lg shadow-lg flex flex-col lg:flex-row items-center lg:items-start">
                 {/* Circular Sub Image */}
-                <div className="absolute -top-4  hidden lg:block -left-20 lg:-left-[115px] w-32 h-32 lg:w-52 lg:h-52   rounded-full overflow-hidden">
-                  {heroData == null ? (
-                    <>
-                      <div className="skeleton h-full"></div>
-                    </>
-                  ) : (
+                <div className="relative w-24 h-24 sm:w-32 sm:h-32 lg:w-52 lg:h-52 rounded-full overflow-hidden flex-shrink-0 lg:absolute -top-4 lg:-left-[115px]">
+                  {heroData?.subImage ? (
                     <Image
-                      src={heroData?.subImage ? heroData.subImage : ""}
-                      alt="Sub Image"
-                      className="object-cover fade-in-up h-full max-h-96 rounded-lg"
-                      width={650} // Fixed width
-                      height={850} // Fixed height
+                      src={heroData.subImage}
+                      alt="Sub Image representing the property"
+                      className="object-cover fade-in-up w-full h-full rounded-full"
+                      width={208} // Dynamic width (52 * 4)
+                      height={208} // Dynamic height
                       priority
                       onLoad={() =>
                         setImageLoaded((prev) => ({ ...prev, sub: true }))
                       }
                     />
+                  ) : (
+                    <div className="skeleton w-full h-full"></div>
                   )}
                 </div>
 
                 {/* Text inside the box */}
-                <div className="lg:pr-5 fade-in-up">
-                  <h3 className="text-lg CalistogaFont lg:text-3xl  xs:pb-0 xs:pt-2 xs:text-center xs:text-nowrap  font-semibold">
-                    {heroData?.subTitle
-                      ? heroData.subTitle
-                      : "Smarter Property Deals"}
+                <div className="text-center lg:text-left flex-1 mt-4 lg:mt-0 lg:pl-[100px]">
+                  <h3 className="text-xl sm:text-2xl lg:text-3xl CalistogaFont font-semibold">
+                    {heroData?.subTitle ?? "Smarter Property Deals"}
                   </h3>
-                  <p className="heroSubTextDescription lg:pl-[100px]  lg:text-justify xs:p-2 xs:text-center">
-                    {heroData?.subTitleDescription
-                      ? heroData.subTitleDescription
-                      : "Trusted by professionals for buying, selling, and investing inreal estate with advanced tools, market insights, and expert guidance."}
+                  <p className="heroSubTextDescription mt-2 text-sm sm:text-base lg:text-lg leading-relaxed">
+                    {heroData?.subTitleDescription ??
+                      "Trusted by professionals for buying, selling, and investing in real estate with advanced tools, market insights, and expert guidance."}
                   </p>
                 </div>
               </div>
