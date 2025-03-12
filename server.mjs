@@ -1,4 +1,4 @@
-import { createServer } from "http";
+import { createServer } from "https";
 import { parse } from "url";
 import next from "next";
 
@@ -13,7 +13,7 @@ app.prepare().then(() => {
     handle(req, res, parsedUrl);
   }).listen(port, () => {
     console.log(
-      `> Server listening at http://localhost:${port} as ${
+      `> Server listening at https://localhost:${port} as ${
         dev ? "development" : process.env.NODE_ENV
       }`
     );

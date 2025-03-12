@@ -5,7 +5,7 @@ import Image from "next/image";
 import logo from "../../../../public/icons/PTCLOGO.png";
 import { Menu, X } from "lucide-react"; // For mobile menu icons
 import { usePathname } from "next/navigation";
-const BASE_URL = "http://ptc-api.ptceg.com";
+import { BaseURL } from "../../../constants/Bases";
 const Navbar = () => {
   const [menuOpen, setMenuOpen] = useState(false);
   const pathname = usePathname(); // Get current route
@@ -27,7 +27,7 @@ const Navbar = () => {
     const fetchData = async () => {
       try {
         const response = await fetch(
-          `${BASE_URL}/api/AppSettings/introduction_video`
+          `${BaseURL.ptc}/api/AppSettings/introduction_video`
         ); // Replace with your actual API URL
         if (!response.ok) throw new Error("Failed to fetch introduction_video");
 
@@ -143,7 +143,7 @@ const Navbar = () => {
               className="px-4 py-2 border border-slate-100 flex items-center gap-2 rounded-lg shadow-lg"
               onClick={() => setShowVideo(true)}
             >
-              <span>Introduction</span>
+              <span className="text-white">Introduction</span>
             </button>
             <Link
               key={"/#interest-section"}

@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import Image from "next/image";
 import adImage from "../../../public/icons/PTCLOGO-removebg-preview-left.png";
 import Loader from "../Loader/loader";
-const BASE_URL = "http://ptc-api.ptceg.com";
+import { BaseURL } from "../../constants/Bases";
 
 const AdSection = () => {
   const [isLoading, setIsLoading] = useState(false);
@@ -19,7 +19,7 @@ const AdSection = () => {
     setIsLoading(true);
     const fetchAdData = async () => {
       try {
-        const response = await fetch(`${BASE_URL}/api/AdSection/1`);
+        const response = await fetch(`${BaseURL.ptc}/api/AdSection/1`);
         if (!response.ok) throw new Error("Failed to fetch hero data");
 
         const data = await response.json();
@@ -27,7 +27,7 @@ const AdSection = () => {
           ...data,
           title: data.data.title,
           description: data.data.description,
-          mainImage: BASE_URL + data.data.mainImage,
+          mainImage: BaseURL.ptc + data.data.mainImage,
           isActive: data.data.isActive,
         });
         setIsLoading(false);

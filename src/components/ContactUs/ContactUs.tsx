@@ -6,7 +6,7 @@ import Loader from "../Loader/loader";
 import { useScrollToTop } from "../useScrollToTop/useScrollToTop";
 import { toast } from "react-toastify";
 
-const BASE_URL = "http://ptc-api.ptceg.com";
+import { BaseURL } from "../../constants/Bases";
 
 const ContactUs = () => {
   const [isLoading, setIsLoading] = useState(false);
@@ -33,13 +33,13 @@ const ContactUs = () => {
     setIsLoading(true);
     const fetchProjectData = async () => {
       try {
-        const response = await fetch(`${BASE_URL}/api/ContactUs/1`);
+        const response = await fetch(`${BaseURL.ptc}/api/ContactUs/1`);
         if (!response.ok) throw new Error("Failed to fetch data");
 
         const result = await response.json();
         setContactUsData({
           ...result,
-          mainImage: BASE_URL + result.data.mainImage,
+          mainImage: BaseURL.ptc + result.data.mainImage,
           title: result.data.title,
           description: result.data.description,
         });
@@ -79,7 +79,7 @@ const ContactUs = () => {
 
     setIsSubmitting(true);
     try {
-      const response = await fetch(`${BASE_URL}/api/ContactUs/SendEmail`, {
+      const response = await fetch(`${BaseURL.ptc}/api/ContactUs/SendEmail`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

@@ -6,7 +6,7 @@ import Link from "next/link";
 import subHeroImage from "../../../public/icons/SubHeroMain.jpg";
 import { useScrollToTop } from "../useScrollToTop/useScrollToTop";
 
-const BASE_URL = "http://ptc-api.ptceg.com";
+import { BaseURL } from "../../constants/Bases";
 
 interface Project {
   id: string;
@@ -28,7 +28,7 @@ const AllProjects = () => {
     setIsLoading(true);
     try {
       const response = await fetch(
-        `${BASE_URL}/api/Project/search?PageSize=5&CurrentPage=${page}`
+        `${BaseURL.ptc}/api/Project/search?PageSize=5&CurrentPage=${page}`
       );
       if (!response.ok) throw new Error("Failed to fetch projects");
 
@@ -40,7 +40,7 @@ const AllProjects = () => {
             id: project.id,
             title: project.title,
             description: project.description,
-            mainIMage: BASE_URL + project.mainIMage,
+            mainIMage: BaseURL.ptc + project.mainIMage,
           })),
         ]);
         setHasMore(result.page.totalPages != page);
@@ -87,10 +87,10 @@ const AllProjects = () => {
       {projectData.map((project, index) => (
         <div key={project.id}>
           <div
-            className={`flex flex-col sm:flex-row justify-center items-center w-full lg:mt-20 md:mt-10 sm:mt-10 xs:mt-10 px-4 sm:px-8 
+            className={`flex flex-col gap-2 sm:flex-row justify-center items-center w-full lg:mt-20 md:mt-10 sm:mt-10 xs:mt-10 px-4 sm:px-8 
             ${index % 2 === 0 ? "sm:flex-row" : "sm:flex-row-reverse"}`}
           >
-            <div className="flex flex-col w-full sm:w-1/3 pr-4 sm:pl-10 lg:pr-28">
+            <div className="flex flex-col w-full xs:w-full ">
               <h2 className="text-4xl sm:text-4xl CalistogaFont font-black text-white uppercase">
                 <Link
                   href={`/Projects/${project.id}`}
@@ -100,26 +100,50 @@ const AllProjects = () => {
                 </Link>
               </h2>
               <p className="leading-7 font-bold text-white interFont text-sm sm:text-base lg:text-[14px]">
-                {project.description}
+                {project.description.length > 300 ? (
+                  <>
+                    <span>{project.description.substring(0, 300)}...</span>
+                    <Link
+                      href={`/Projects/${project.id}`}
+                      onClick={() => {
+                        setIsLoading(true);
+                      }}
+                      className="seeMoreButton underline font-bold"
+                    >
+                      See More
+                    </Link>
+                    .
+                  </>
+                ) : (
+                  project.description
+                )}
               </p>
             </div>
             <div
-              className={`w-full sm:w-2/3 flex flex-col 
+              className={`w-full xs:w-full flex flex-col 
               ${
                 index % 2 === 0
-                  ? "items-center sm:items-end pr-4"
-                  : "items-start sm:items-start pl-4"
+                  ? "items-center xs:items-end "
+                  : "items-start xs:items-start "
               }   
-              sm:pr-10 mt-8 sm:mt-0`}
+                mt-8 xs:mt-0`}
             >
-              <Image
-                src={project.mainIMage}
-                alt="project"
-                className="rounded-lg w-full sm:w-[540px] sm:h-[290px] object-cover"
-                width={540}
-                height={290}
-                loading="eager"
-              />
+              <Link
+                href={`/Projects/${project.id}`}
+                onClick={() => {
+                  setIsLoading(true);
+                }}
+              >
+                <Image
+                  src={project.mainIMage}
+                  alt="project"
+                  className="rounded-lg w-full xs:w-[540px] xs:h-[290px] object-cover"
+                  width={540}
+                  height={290}
+                  loading="eager"
+                  priority
+                />
+              </Link>
             </div>
           </div>
           <div className="z-10 flex flex-col items-center justify-center h-full mt-16">

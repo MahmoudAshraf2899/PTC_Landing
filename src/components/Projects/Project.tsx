@@ -6,7 +6,7 @@ import Image from "next/image";
 import subHeroImage from "../../../public/icons/SubHeroMain.jpg";
 import { useScrollToTop } from "../useScrollToTop/useScrollToTop";
 
-const BASE_URL = "http://ptc-api.ptceg.com";
+import { BaseURL } from "../../constants/Bases";
 
 interface MediaItem {
   id: number;
@@ -33,17 +33,17 @@ function Project() {
     setIsLoading(true);
     const fetchProjectData = async () => {
       try {
-        const response = await fetch(`${BASE_URL}/api/Project/${id}`);
+        const response = await fetch(`${BaseURL.ptc}/api/Project/${id}`);
         if (!response.ok) throw new Error("Failed to fetch project data");
 
         const data = await response.json();
         setProjectData({
           title: data.data.title,
           description: data.data.description,
-          mainImageUrl: BASE_URL + data.data.mainImageUrl,
+          mainImageUrl: BaseURL.ptc + data.data.mainImageUrl,
           media: data.data.media.map((item: MediaItem) => ({
             ...item,
-            mediaUrl: BASE_URL + item.mediaUrl,
+            mediaUrl: BaseURL.ptc + item.mediaUrl,
           })),
         });
       } catch (error) {

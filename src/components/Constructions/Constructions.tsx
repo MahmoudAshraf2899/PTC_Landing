@@ -5,7 +5,7 @@ import subHeroImage from "../../../public/icons/SubHeroMain.jpg";
 import Link from "next/link";
 import Loader from "../Loader/loader";
 import { useScrollToTop } from "../useScrollToTop/useScrollToTop";
-const BASE_URL = "http://ptc-api.ptceg.com";
+import { BaseURL } from "../../constants/Bases";
 interface Project {
   id: string;
   title: string;
@@ -35,16 +35,18 @@ const Constructions = () => {
     const fetchProjectData = async () => {
       setIsLoading(true);
       try {
-        const mainDataResponse = await fetch(`${BASE_URL}/api/Constructions/1`);
+        const mainDataResponse = await fetch(
+          `${BaseURL.ptc}/api/Constructions/1`
+        );
         if (!mainDataResponse.ok) throw new Error("Failed to fetch hero data");
 
         const mainData = await mainDataResponse.json();
         setConstructionData({
           ...mainData,
-          mainImage: BASE_URL + mainData.data.mainImage,
+          mainImage: BaseURL.ptc + mainData.data.mainImage,
           title: mainData.data.title,
         });
-        const response = await fetch(`${BASE_URL}/api/Constructions`);
+        const response = await fetch(`${BaseURL.ptc}/api/Constructions`);
         if (!response.ok) throw new Error("Failed to fetch hero data");
 
         const result = await response.json();
@@ -54,7 +56,7 @@ const Constructions = () => {
               id: project.id,
               title: project.title,
               description: project.description,
-              image: BASE_URL + project.image,
+              image: BaseURL.ptc + project.image,
             }))
           );
         } else {

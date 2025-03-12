@@ -4,8 +4,8 @@ import Image from "next/image";
 import Loader from "../Loader/loader";
 import subHeroImage from "../../../public/icons/SubHeroMain.jpg";
 import Link from "next/link";
+import { BaseURL } from "../../constants/Bases";
 
-const BASE_URL = "http://ptc-api.ptceg.com";
 interface Project {
   id: string;
   name: string;
@@ -15,7 +15,6 @@ interface Project {
 const ProjectSection = () => {
   const [isLoading, setIsLoading] = useState(false);
 
-  
   const [projectData, setProjectsData] = useState<
     {
       id: string;
@@ -30,7 +29,7 @@ const ProjectSection = () => {
     setIsLoading(true);
     const fetchProjectData = async () => {
       try {
-        const response = await fetch(`${BASE_URL}/api/Project`);
+        const response = await fetch(`${BaseURL.ptc}/api/Project`);
         if (!response.ok) throw new Error("Failed to fetch hero data");
 
         const result = await response.json();
@@ -40,7 +39,7 @@ const ProjectSection = () => {
               id: project.id,
               name: project.name,
               description: project.description,
-              image: BASE_URL + project.image,
+              image: BaseURL.ptc + project.image,
             }))
           );
         } else {
@@ -74,19 +73,26 @@ const ProjectSection = () => {
               {projectData == null ? (
                 <div className="skeleton h-[310px] w-full"></div>
               ) : (
-                <Image
-                  src={item.image == undefined ? subHeroImage : item.image}
-                  alt={item.name}
-                  className="w-full h-[310px] rounded-lg object-cover"
-                  width={500}
-                  height={500}
-                  priority
-                />
+                <Link
+                  href={`/Projects/${item.id}`}
+                  onClick={() => {
+                    setIsLoading(true);
+                  }}
+                >
+                  <Image
+                    src={item.image == undefined ? subHeroImage : item.image}
+                    alt={item.name}
+                    className="w-full h-[310px] rounded-lg object-cover"
+                    width={500}
+                    height={500}
+                    priority
+                  />
+                </Link>
               )}
 
               {/* Content Section */}
               <div className="p-5 flex flex-col flex-grow">
-                <a href="#">
+                <a>
                   <Link
                     href={`/Projects/${item.id}`}
                     onClick={() => {
@@ -100,8 +106,24 @@ const ProjectSection = () => {
                 <div className="divider"></div>
 
                 {/* Description - Takes up space but doesn't push the button down */}
-                <p className="text-white mb-2 lg:text-left xs:text-[13px] xs:text-center lg:text-[14px] interFont tracking-tight flex-grow overflow-hidden">
-                  {item.description}
+                <p className="mb-2 lg:text-left xs:text-[13px] xs:text-center lg:text-[14px] interFont tracking-tight flex-grow overflow-hidden text-inherit">
+                  {item.description.length > 300 ? (
+                    <>
+                      <span>{item.description.substring(0, 300)}...</span>
+                      <Link
+                        onClick={() => {
+                          setIsLoading(true);
+                        }}
+                        href={`/Projects/${item.id}`}
+                        className="seeMoreButton underline font-bold"
+                      >
+                        See More
+                      </Link>
+                      .
+                    </>
+                  ) : (
+                    item.description
+                  )}
                 </p>
 
                 {/* Button - Always at Bottom */}

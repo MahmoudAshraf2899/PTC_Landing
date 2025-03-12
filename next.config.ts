@@ -5,9 +5,13 @@ const nextConfig: NextConfig = {
   images: {
     remotePatterns: [
       {
-        protocol: "http",
+        protocol: "https",
         hostname: "ptc-api.ptceg.com",
       },
+      {
+        protocol: "https",
+        hostname: "*.ptceg.com", // Allows subdomains
+      }
     ],
   },
 };

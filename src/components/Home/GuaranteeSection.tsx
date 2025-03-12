@@ -2,7 +2,7 @@
 import Image from "next/image";
 import { useEffect, useState } from "react";
 import Loader from "../Loader/loader";
-const BASE_URL = "http://ptc-api.ptceg.com";
+import { BaseURL } from "../../constants/Bases";
 
 const GuaranteeSection = () => {
   const [isLoading, setIsLoading] = useState(false);
@@ -17,7 +17,7 @@ const GuaranteeSection = () => {
     setIsLoading(true);
     const fetchGuaranteeData = async () => {
       try {
-        const response = await fetch(`${BASE_URL}/api/GuaranteeSection/1`); // Replace with your actual API URL
+        const response = await fetch(`${BaseURL.ptc}/api/GuaranteeSection/1`); // Replace with your actual API URL
         if (!response.ok) throw new Error("Failed to fetch hero data");
 
         const data = await response.json();
@@ -60,7 +60,7 @@ const GuaranteeSection = () => {
                   {/* Circular Icon Container */}
                   <div className="flex items-center  justify-center rounded-full mainBackground h-[160px] w-[160px] md:h-[200px] md:w-[200px]">
                     <Image
-                      src={BASE_URL + item.icon}
+                      src={BaseURL.ptc + item.icon}
                       width={80}
                       height={80}
                       className="rounded-lg fade-in-scale object-cover"

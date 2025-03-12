@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import Loader from "../Loader/loader";
 import { useScrollToTop } from "../useScrollToTop/useScrollToTop";
 
-const BASE_URL = "http://ptc-api.ptceg.com";
+import { BaseURL } from "../../constants/Bases";
 
 const AboutUs = () => {
   const [isLoading, setIsLoading] = useState(false);
@@ -20,13 +20,13 @@ const AboutUs = () => {
       try {
         setIsLoading(true);
 
-        const response = await fetch(`${BASE_URL}/api/AboutUs/1`); // Replace with your actual API URL
+        const response = await fetch(`${BaseURL.ptc}/api/AboutUs/1`); // Replace with your actual API URL
         if (!response.ok) throw new Error("Failed to fetch about us data");
 
         const data = await response.json();
         setAboutUsData({
           ...data,
-          mainImage: BASE_URL + data.data.mainImage,
+          mainImage: BaseURL.ptc + data.data.mainImage,
           description: data.data.description,
           title: data.data.title,
         });

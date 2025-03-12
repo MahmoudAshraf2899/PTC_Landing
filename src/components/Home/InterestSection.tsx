@@ -4,8 +4,7 @@ import subHeroImage from "../../../public/icons/hero.jpg";
 import Image from "next/image";
 import Loader from "../Loader/loader";
 import { toast } from "react-toastify";
-
-const BASE_URL = "http://ptc-api.ptceg.com";
+import { BaseURL } from "../../constants/Bases";
 
 interface Project {
   id: string;
@@ -28,7 +27,7 @@ const InterestSection = () => {
     const fetchProjectData = async () => {
       setIsLoading(true);
       try {
-        const response = await fetch(`${BASE_URL}/api/Lookup/projects`);
+        const response = await fetch(`${BaseURL.ptc}/api/Lookup/projects`);
         if (!response.ok) throw new Error("Failed to fetch projects");
 
         const result = await response.json();
@@ -72,7 +71,7 @@ const InterestSection = () => {
 
     setIsSubmitting(true);
     try {
-      const response = await fetch(`${BASE_URL}/api/Project/interest`, {
+      const response = await fetch(`${BaseURL.ptc}/api/Project/interest`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

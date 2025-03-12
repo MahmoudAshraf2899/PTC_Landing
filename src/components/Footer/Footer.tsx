@@ -6,7 +6,7 @@ import emailIcon from "../../../public/icons/email-open-svgrepo-com.png";
 import phone from "../../../public/icons/call-svgrepo-com.png";
 import location from "../../../public/icons/location-svgrepo-com.png";
 
-const BASE_URL = "http://ptc-api.ptceg.com";
+import { BaseURL } from "../../constants/Bases";
 interface SocialMediaPreview {
   id: string;
   iconPath: string;
@@ -34,12 +34,12 @@ const Footer = () => {
     const fetchData = async () => {
       try {
         const responses = await Promise.all([
-          fetch(`${BASE_URL}/api/AppSettings/footer_email`),
-          fetch(`${BASE_URL}/api/AppSettings/phone`),
-          fetch(`${BASE_URL}/api/AppSettings/location`),
-          fetch(`${BASE_URL}/api/AppSettings/google_maps_location`),
-          fetch(`${BASE_URL}/api/AppSettings/footer_title`),
-          fetch(`${BASE_URL}/api/SocialMedia`),
+          fetch(`${BaseURL.ptc}/api/AppSettings/footer_email`),
+          fetch(`${BaseURL.ptc}/api/AppSettings/phone`),
+          fetch(`${BaseURL.ptc}/api/AppSettings/location`),
+          fetch(`${BaseURL.ptc}/api/AppSettings/google_maps_location`),
+          fetch(`${BaseURL.ptc}/api/AppSettings/footer_title`),
+          fetch(`${BaseURL.ptc}/api/SocialMedia`),
         ]);
 
         const [
@@ -61,7 +61,7 @@ const Footer = () => {
         setSocialMedia(
           SocialMediaData.data.map((item: SocialMediaPreview) => ({
             id: item.id,
-            iconPath: `${BASE_URL}${item.iconPath.replace("\\", "/")}`, // Ensure proper URL format
+            iconPath: `${BaseURL.ptc}${item.iconPath.replace("\\", "/")}`, // Ensure proper URL format
             targetLink: item.targetLink,
           }))
         );

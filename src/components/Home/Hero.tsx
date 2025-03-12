@@ -3,8 +3,7 @@ import { useEffect, useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import Loader from "../Loader/loader";
-
-const BASE_URL = "http://ptc-api.ptceg.com";
+import { BaseURL } from "../../constants/Bases";
 
 const HeroSection = () => {
   const [isLoading, setIsLoading] = useState(false);
@@ -28,14 +27,14 @@ const HeroSection = () => {
       try {
         setIsLoading(true);
 
-        const response = await fetch(`${BASE_URL}/api/HeroSection/1`); // Replace with your actual API URL
+        const response = await fetch(`${BaseURL.ptc}/api/HeroSection/1`); // Replace with your actual API URL
         if (!response.ok) throw new Error("Failed to fetch hero data");
 
         const data = await response.json();
         setHeroData({
           ...data,
-          mainImage: BASE_URL + data.data.mainImage,
-          subImage: BASE_URL + data.data.subImage,
+          mainImage: BaseURL.ptc + data.data.mainImage,
+          subImage: BaseURL.ptc + data.data.subImage,
           mainTitle: data.data.mainTitle,
           subTitle: data.data.subTitle,
           subTitleDescription: data.data.subTitleDescription,
