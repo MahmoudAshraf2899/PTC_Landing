@@ -114,58 +114,70 @@ const Developments = () => {
           {projectData.map((project, index) => (
             <div key={project.id}>
               <div
-                className={`flex flex-col sm:flex-row justify-center items-center w-full lg:mt-20 md:mt-10 sm:mt-10 xs:mt-10 px-4 sm:px-8 
-                  ${index % 2 === 0 ? "sm:flex-row" : "sm:flex-row-reverse"}`}
+                className={`flex flex-col gap-2 sm:flex-row justify-center items-center w-full lg:mt-20 md:mt-10 sm:mt-10 xs:mt-10 px-4 sm:px-8 
+            ${index % 2 === 0 ? "sm:flex-row" : "sm:flex-row-reverse"}`}
               >
-                {/* Text Section */}
-                <div className="flex flex-col w-full sm:w-1/3  sm:pl-10 lg:pr-28">
-                  <h2 className="lg:text-4xl lg:text-left xs:text-2xl xs:text-center xs:pb-4 sm:text-4xl CalistogaFont font-black text-white uppercase">
-                    <Link href={`/Projects/${project.id}`} className="">
+                <div className="flex flex-col w-full xs:w-full ">
+                  <h2 className="text-4xl sm:text-4xl CalistogaFont font-black text-white uppercase">
+                    <Link
+                      href={`/Projects/${project.id}`}
+                      className="cursor-pointer"
+                    >
                       {project.title}
                     </Link>
                   </h2>
-                  <p className="leading-7 font-bold lg:text-left xs:text-center xs:pb-4 xs:text-[14px] text-white interFont   sm:text-base lg:text-[14px]">
-                    {project.description}
+                  <p className="leading-7 font-bold text-white interFont text-sm sm:text-base lg:text-[14px]">
+                    {project.description.length > 300 ? (
+                      <>
+                        <span>{project.description.substring(0, 300)}...</span>
+                        <Link
+                          href={`/Projects/${project.id}`}
+                          onClick={() => {
+                            setIsLoading(true);
+                          }}
+                          className="seeMoreButton underline font-bold"
+                        >
+                          See More
+                        </Link>
+                        .
+                      </>
+                    ) : (
+                      project.description
+                    )}
                   </p>
                 </div>
-
-                {/* Image Section */}
                 <div
-                  className={`w-full sm:w-2/3 flex flex-col xs:text-center xs:p-0     sm:pl-10 lg:pr-28          
+                  className={`w-full xs:w-full flex flex-col 
               ${
                 index % 2 === 0
-                  ? "items-center sm:items-end pr-4"
-                  : "items-start sm:items-start pl-4"
-              }   sm:pr-10 mt-8 sm:mt-0`}
+                  ? "items-center xs:items-end "
+                  : "items-start xs:items-start "
+              }   
+                mt-8 xs:mt-0`}
                 >
-                  {!imageLoaded[project.id] && (
-                    <div className="rounded-lg w-full sm:w-[540px] sm:h-[290px] bg-gray-700 animate-pulse"></div>
-                  )}
-                  <Image
-                    src={project.image}
-                    alt="project"
-                    className={`rounded-lg w-full sm:w-[540px] sm:h-[290px] object-cover transition-opacity duration-500 ${
-                      imageLoaded[project.id] ? "opacity-100" : "opacity-0"
-                    }`}
-                    width={540}
-                    height={290}
-                    loading="eager"
-                    onLoad={() =>
-                      setImageLoaded((prev) => ({
-                        ...prev,
-                        [project.id]: true,
-                      }))
-                    }
-                  />
+                  <Link
+                    href={`/Projects/${project.id}`}
+                    onClick={() => {
+                      setIsLoading(true);
+                    }}
+                  >
+                    <Image
+                      src={project.image}
+                      alt="project"
+                      className="rounded-lg w-full xs:w-[540px] xs:h-[290px] object-cover"
+                      width={540}
+                      height={290}
+                      loading="eager"
+                      priority
+                    />
+                  </Link>
                 </div>
               </div>
-
-              {/* Divider */}
               <div className="z-10 flex flex-col items-center justify-center h-full mt-16">
                 <div className="divider w-1/2 sm:w-3/4 lg:w-1/2"></div>
               </div>
             </div>
-          ))}{" "}
+          ))}
         </>
       )}
     </>
