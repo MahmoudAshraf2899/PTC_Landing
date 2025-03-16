@@ -106,7 +106,7 @@ const ProjectSection = () => {
                 <div className="divider"></div>
 
                 {/* Description - Takes up space but doesn't push the button down */}
-                <p className="mb-2 lg:text-left xs:text-[13px] xs:text-center lg:text-[14px] interFont tracking-tight flex-grow overflow-hidden text-inherit">
+                <p className="mb-2 text-white lg:text-left xs:text-[13px] xs:text-center lg:text-[14px] interFont tracking-tight flex-grow overflow-hidden text-inherit">
                   {item.description.length > 300 ? (
                     <>
                       <span>{item.description.substring(0, 300)}...</span>
@@ -147,7 +147,7 @@ const ProjectSection = () => {
             key={"Projects"}
             href={"/Projects"}
             className="
-          font-normal interFont h-14 py-3 px-12 mainBackground rounded-lg shadow-lg text-[16px]"
+          text-white font-normal interFont h-14 py-3 px-12 mainBackground rounded-lg shadow-lg text-[16px]"
           >
             All Projects
           </Link>
