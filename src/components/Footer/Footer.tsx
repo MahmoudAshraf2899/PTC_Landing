@@ -96,7 +96,8 @@ const Footer = () => {
                   alt="social-media"
                   width={35}
                   height={35}
-                  className="bg-white rounded-full p-1"
+                  priority
+                  className="bg-white w-8 h-8 rounded-full p-1"
                 />
               </a>
             ))}
