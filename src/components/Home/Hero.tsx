@@ -71,7 +71,7 @@ const HeroSection = () => {
                 <Image
                   src={heroData?.mainImage ? heroData.mainImage : ""}
                   alt="Main Hero Image"
-                  className="object-cover h-full  max-h-96 rounded-lg fade-in-scale"
+                  className="object-cover h-full xl:w-full max-h-96 rounded-lg fade-in-scale"
                   width={650} // Fixed width
                   height={450} // Fixed height
                   priority
