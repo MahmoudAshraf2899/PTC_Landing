@@ -24,6 +24,7 @@ const Footer = () => {
   const [email, setEmail] = useState("");
   const [description, setDescription] = useState("");
   const [phoneNumber, setPhoneNumber] = useState("");
+  const [phoneNumberTwo, setPhoneNumberTwo] = useState("");
   const [address, setAddress] = useState("");
   const [googleMaps, setGoogleMaps] = useState("");
   const [socialMedia, setSocialMedia] = useState<
@@ -36,6 +37,7 @@ const Footer = () => {
         const responses = await Promise.all([
           fetch(`${BaseURL.ptc}/api/AppSettings/footer_email`),
           fetch(`${BaseURL.ptc}/api/AppSettings/phone`),
+          fetch(`${BaseURL.ptc}/api/AppSettings/phoneTwo`),
           fetch(`${BaseURL.ptc}/api/AppSettings/location`),
           fetch(`${BaseURL.ptc}/api/AppSettings/google_maps_location`),
           fetch(`${BaseURL.ptc}/api/AppSettings/footer_title`),
@@ -45,6 +47,7 @@ const Footer = () => {
         const [
           EmailData,
           PhoneData,
+          PhoneDataTwo,
           AddressData,
           GoogleMapsData,
           DescriptionData,
@@ -53,6 +56,7 @@ const Footer = () => {
 
         setEmail(EmailData.data.value);
         setPhoneNumber(PhoneData.data.value);
+        setPhoneNumberTwo(PhoneDataTwo.data.value);
         setAddress(AddressData.data.value);
         setGoogleMaps(GoogleMapsData.data.value);
         setDescription(DescriptionData.data.value);
@@ -142,6 +146,8 @@ const Footer = () => {
               className="lg:block xs:hidden"
             />
             <p className="interFont text-[13px]">{phoneNumber}</p>
+            <p className="interFont text-[13px]">||</p>
+            <p className="interFont text-[13px]">{phoneNumberTwo}</p>
           </div>
           <div className="flex items-start gap-2 max-w-xs">
             <Image
